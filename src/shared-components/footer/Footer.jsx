@@ -20,22 +20,22 @@ const Footer = () => {
           <h3 className="text-lg font-semibold text-gray-400">MENU</h3>
           <ul className="mt-2 space-y-2 text-lg">
             <li>
-              <Link to="/" className="hover:text-yellow-500">
+              <Link to="" className="hover:text-yellow-500">
                 Home
               </Link>
             </li>
             <li>
-              <Link to="/about" className="hover:text-yellow-500">
+              <Link to="" className="hover:text-yellow-500">
                 About Us
               </Link>
             </li>
             <li>
-              <Link to="/restaurants" className="hover:text-yellow-500">
+              <Link to="" className="hover:text-yellow-500">
                 Restaurants
               </Link>
             </li>
             <li>
-              <Link to="/contact" className="hover:text-yellow-500">
+              <Link to="" className="hover:text-yellow-500">
                 Contacts
               </Link>
             </li>
@@ -60,10 +60,10 @@ const Footer = () => {
       <div className=" max-w-7xl mx-auto mt-10 border-t border-gray-700 pt-4 text-gray-400 text-center text-sm md:flex md:justify-between">
         <p>Copyright © 2022. Quickeat. All rights reserved.</p>
         <div className="flex justify-center md:justify-end space-x-4 mt-2 md:mt-0">
-          <Link to="/privacy" className="hover:text-yellow-500">
+          <Link to="" className="hover:text-yellow-500">
             Privacy Policy
           </Link>
-          <Link to="/terms" className="hover:text-yellow-500">
+          <Link to="" className="hover:text-yellow-500">
             Terms & Services
           </Link>
         </div>
