@@ -1,21 +1,18 @@
 import PageContainer from "../../../../components/containers/PageContainer";
-import useContextValue from "../../../../hooks/useContextValue";
+
 import AtAGlance from "../at-a-glance/AtAGlance";
 import Banner from "../banner/Banner";
 import HowToWork from "../how-to-work/HowToWork";
 import Subscribe from "../subscribe/Subscribe";
 
 const Home = () => {
-  const { name } = useContextValue();
   return (
-    <div>
-      <h2 className="text-5xl font-semibold text-center my-16">{name}</h2>
+    <PageContainer>
       <Banner></Banner>
       <HowToWork></HowToWork>
       <AtAGlance></AtAGlance>
       <Subscribe></Subscribe>
-    </div>
-
+    </PageContainer>
   );
 };
 
