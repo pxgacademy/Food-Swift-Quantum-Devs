@@ -1,3 +1,4 @@
+import PageContainer from "../../../../components/containers/PageContainer";
 import useContextValue from "../../../../hooks/useContextValue";
 import AtAGlance from "../at-a-glance/AtAGlance";
 import Banner from "../banner/Banner";
@@ -14,6 +15,7 @@ const Home = () => {
       <AtAGlance></AtAGlance>
       <Subscribe></Subscribe>
     </div>
+
   );
 };
 
