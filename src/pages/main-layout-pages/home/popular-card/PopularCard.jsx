@@ -1,5 +1,4 @@
 import React from "react";
-import { motion } from "framer-motion";
 import PageContainer from "../../../../components/containers/PageContainer";
 import { FaHeart, FaShoppingCart, FaStar, FaRegStar } from "react-icons/fa";
 
@@ -35,12 +34,11 @@ const burgers = [
 ];
 
 const PopularCard = () => {
-
   return (
     <PageContainer>
       <div className="grid grid-cols-1 bg-gray-50 dark:bg-primaryColor md:grid-cols-2 lg:grid-cols-4 gap-6 p-6">
         {burgers.map((burger) => (
-          <motion.div
+          <div
             key={burger.id}
             whileHover={{ scale: 1.05 }}
             className="border rounded-2xl shadow-lg transition bg-white text-black"
@@ -57,7 +55,14 @@ const PopularCard = () => {
               <h3 className="text-lg font-semibold">{burger.name}</h3>
               <div className="flex justify-center my-2">
                 {Array.from({ length: 5 }).map((_, index) => (
-                  <span key={index} className={index < burger.rating ? "text-yellow-500" : "text-gray-400"}>
+                  <span
+                    key={index}
+                    className={
+                      index < burger.rating
+                        ? "text-yellow-500"
+                        : "text-gray-400"
+                    }
+                  >
                     {index < burger.rating ? <FaStar /> : <FaRegStar />}
                   </span>
                 ))}
@@ -67,7 +72,7 @@ const PopularCard = () => {
                 <FaShoppingCart /> Order Now
               </button>
             </div>
-          </motion.div>
+          </div>
         ))}
       </div>
     </PageContainer>
