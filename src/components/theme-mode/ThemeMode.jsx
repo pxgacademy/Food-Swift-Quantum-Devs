@@ -9,23 +9,23 @@ const ThemeMode = ({ className = "" }) => {
   const { isDark, setIsDark } = useContextValue();
 
   useEffect(() => {
-    const setThemeMode = () => {
-      const theme = localStorage.getItem("theme");
-      console.log(theme);
-      if (theme) {
-        setIsDark(theme === "dark");
-        document.documentElement.setAttribute("data-theme", theme);
-        document.documentElement.classList.add(theme);
-      } else {
-        localStorage.setItem("theme", "dark");
-        document.documentElement.setAttribute("data-theme", "dark");
-        document.documentElement.classList.add("dark");
-        setIsDark(true)
-      }
-    };
-
-    return () => setThemeMode();
+        setThemeMode();
   }, []);
+
+  const setThemeMode = () => {
+    const theme = localStorage.getItem("theme");
+    console.log(theme);
+    if (theme) {
+      setIsDark(theme === "dark");
+      document.documentElement.setAttribute("data-theme", theme);
+      document.documentElement.classList.add(theme);
+    } else {
+      localStorage.setItem("theme", "dark");
+      document.documentElement.setAttribute("data-theme", "dark");
+      document.documentElement.classList.add("dark");
+      setIsDark(true);
+    }
+  };
 
   const handleToggleTheme = () => {
     const theme = !isDark;
