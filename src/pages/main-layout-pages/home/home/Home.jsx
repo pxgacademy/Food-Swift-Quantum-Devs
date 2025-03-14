@@ -16,7 +16,7 @@ const Home = () => {
       <HowToWork></HowToWork>
       <Restaurant></Restaurant>
       {/* Popular card Section */}
-      <PopularCard/>
+      <PopularCard />
       <AtAGlance></AtAGlance>
       <Subscribe></Subscribe>
     </PageContainer>
