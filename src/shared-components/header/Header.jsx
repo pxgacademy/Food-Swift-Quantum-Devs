@@ -8,7 +8,7 @@ const Header = () => {
   return (
     <header className="sticky top-0">
       <nav>
-        <PageContainer className="flex items-center justify-between py-5 bg-gray-50 dark:bg-gray-800  text-primaryColor">
+        <PageContainer className="flex items-center justify-between py-5 bg-gray-100/80 dark:bg-gray-800/80 backdrop-blur  text-primaryColor">
           {/* left side nav */}
           <div>
             <h3 className="text-xl md:text-2xl font-semibold">Food Swift</h3>
@@ -17,10 +17,12 @@ const Header = () => {
           {/* Right side nav */}
           <div className="flex items-center gap-x-5">
             <Link>
-              <button className="btn bg-transparent " >Login</button>
+              <button className="btn bg-transparent ">Login</button>
             </Link>
             <Link>
-              <button className="btn bg-primaryColor hover:bg-primaryColor/80 text-white">Register</button>
+              <button className="btn bg-primaryColor hover:bg-primaryColor/80 text-white">
+                Register
+              </button>
             </Link>
             <ThemeMode className="cursor-pointer border rounded-full p-2" />
 
