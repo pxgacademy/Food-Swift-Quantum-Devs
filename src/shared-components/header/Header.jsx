@@ -1,14 +1,12 @@
 import React from "react";
 import ThemeMode from "../../components/theme-mode/ThemeMode";
-import PageContainer from "../../components/containers/PageContainer";
 import Cart from "./Cart";
 import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
     <header className="sticky top-0">
-      <nav>
-        <PageContainer className="flex items-center justify-between py-5 bg-gray-100/80 dark:bg-gray-800/80 backdrop-blur  text-primaryColor">
+      <nav className="w-full max-w-[1600px] mx-auto py-5 px-5 md:px-8 lg:px-12 flex items-center justify-between bg-gray-100/80 dark:bg-gray-800/80 backdrop-blur  dark:text-primaryColor">
           {/* left side nav */}
           <div>
             <h3 className="text-xl md:text-2xl font-semibold">Food Swift</h3>
@@ -60,7 +58,6 @@ const Header = () => {
               </ul>
             </div>
           </div>
-        </PageContainer>
       </nav>
     </header>
   );

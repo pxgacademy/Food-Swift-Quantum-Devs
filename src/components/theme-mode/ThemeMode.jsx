@@ -11,10 +11,16 @@ const ThemeMode = ({ className = "" }) => {
   useEffect(() => {
     const setThemeMode = () => {
       const theme = localStorage.getItem("theme");
+      console.log(theme);
       if (theme) {
         setIsDark(theme === "dark");
         document.documentElement.setAttribute("data-theme", theme);
         document.documentElement.classList.add(theme);
+      } else {
+        localStorage.setItem("theme", "dark");
+        document.documentElement.setAttribute("data-theme", "dark");
+        document.documentElement.classList.add("dark");
+        setIsDark(true)
       }
     };
 
@@ -30,13 +36,12 @@ const ThemeMode = ({ className = "" }) => {
     );
 
     document.documentElement.classList.toggle("dark", theme);
-    document.documentElement.classList.toggle("light", !theme);
     localStorage.setItem("theme", theme ? "dark" : "light");
   };
 
   return (
     <button onClick={handleToggleTheme} className={className}>
-      {isDark ? <BsFillMoonStarsFill /> : <IoSunny />}
+      {isDark ? <IoSunny /> : <BsFillMoonStarsFill />}
     </button>
   );
 };
