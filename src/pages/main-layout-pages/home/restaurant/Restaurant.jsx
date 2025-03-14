@@ -6,7 +6,7 @@ import restaurantFour from '../../../../assets/restaurant/restaurant4.png'
 
 const Restaurant = () => {
     return (
-        <div className='lg:px-24 md:px-12 px-6 lg:py-12 py-6'>
+        <div className='lg:py-12 py-6'>
             <h2 className="lg:text-3xl text-2xl font-bold text-center pb-8">Food Delivery from Dhaka Best Restaurants </h2>
             <div className='grid lg:grid-cols-4 md:grid-cols-2 gird-cols-1 gap-6'>
                 <div className="rounded-md overflow-hidden border border-amber-100 bg-amber-50">

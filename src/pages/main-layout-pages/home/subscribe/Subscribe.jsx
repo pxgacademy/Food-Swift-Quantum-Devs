@@ -2,7 +2,7 @@ import subscribe from "../../../../assets/subscribe.png";
 
 const Subscribe = () => {
     return (
-        <div className="lg:px-24 md:px-12 px-6 lg:py-12 py-6">
+        <div className="lg:py-12 py-6">
             <div className="flex justify-between md:flex-nowrap flex-wrap items-center md:gap-24 gap-4">
                 <div>
                      <img src={subscribe} alt="" />

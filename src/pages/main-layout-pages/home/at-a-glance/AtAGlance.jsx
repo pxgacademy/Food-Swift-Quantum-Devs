@@ -2,7 +2,7 @@
 
 const AtAGlance = () => {
     return (
-        <div className="lg:px-24 md:px-12 px-6 lg:py-12 py-6">
+        <div className="lg:py-12 py-6">
             <h2 className="lg:text-3xl text-2xl font-bold text-center pb-8">At a Glance</h2>
             <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-6">
                 <div className="shadow-sm shadow-sm shadow-slate-300 p-6 text-center rounded-2xl">
