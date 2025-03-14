@@ -1,8 +1,10 @@
 import PageContainer from "../../../../components/containers/PageContainer";
+import useContextValue from "../../../../hooks/useContextValue";
 
 import AtAGlance from "../at-a-glance/AtAGlance";
 import Banner from "../banner/Banner";
 import HowToWork from "../how-to-work/HowToWork";
+import PopularCard from "../popular-card/PopularCard";
 import Subscribe from "../subscribe/Subscribe";
 
 const Home = () => {
@@ -10,6 +12,8 @@ const Home = () => {
     <PageContainer>
       <Banner></Banner>
       <HowToWork></HowToWork>
+      {/* Popular card Section */}
+      <PopularCard/>
       <AtAGlance></AtAGlance>
       <Subscribe></Subscribe>
     </PageContainer>
