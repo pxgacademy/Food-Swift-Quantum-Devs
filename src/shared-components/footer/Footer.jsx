@@ -3,8 +3,8 @@ import { FaFacebook, FaTwitter, FaInstagram } from "react-icons/fa";
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-900 w-full text-gray-300 py-10 px-5">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 text-center md:text-left ">
+    <footer className="bg-gray-900 max-w-[1600px] mx-auto text-gray-300 py-10 px-5 md:px-8 lg:px-12">
+      <div className=" max-w-[1600px] mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 text-center md:text-left ">
         {/* Left Section */}
         <div>
           <h2 className="text-3xl font-bold text-white flex justify-center md:justify-start items-center gap-2">
@@ -16,8 +16,8 @@ const Footer = () => {
           </p>
         </div>
         {/* Middle Sec */}
-        <div>
-          <h3 className="text-lg font-semibold text-gray-400">MENU</h3>
+        <div className=" flex items-center flex-col">
+          <h3 className="text-lg font-semibold text-gray-400 md:-ml-8">MENU</h3>
           <ul className="mt-2 space-y-2 text-lg">
             <li>
               <Link to="" className="hover:text-yellow-500">
@@ -57,7 +57,7 @@ const Footer = () => {
         </div>
       </div>
       {/* Footer Bottom */}
-      <div className=" max-w-7xl mx-auto mt-10 border-t border-gray-700 pt-4 text-gray-400 text-center text-sm md:flex md:justify-between">
+      <div className=" max-w-[1600px] mx-auto mt-10 border-t border-gray-700 pt-4 text-gray-400 text-center text-sm md:flex md:justify-between">
         <p>Copyright © 2022. Quickeat. All rights reserved.</p>
         <div className="flex justify-center md:justify-end space-x-4 mt-2 md:mt-0">
           <Link to="" className="hover:text-yellow-500">
