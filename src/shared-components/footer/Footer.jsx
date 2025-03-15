@@ -15,7 +15,7 @@ const Footer = () => {
             lacus luctus accumsan tortor posuere.
           </p>
         </div>
-        {/* Middle Section */}
+        {/* Middle Sec */}
         <div>
           <h3 className="text-lg font-semibold text-gray-400">MENU</h3>
           <ul className="mt-2 space-y-2 text-lg">
