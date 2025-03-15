@@ -2,8 +2,9 @@ import workOne from '../../../../assets/work/work-1.png'
 
 const HowToWork = () => {
     return (
-        <div className='px-24'>
-             <div className='grid grid-cols-3 gap-24'>
+        <div className='lg:py-12 py-6'>
+             <h2 className="lg:text-3xl text-2xl font-bold text-center pb-8">How To Work</h2>
+             <div className='grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-24'>
                 <div>
                     <img src={workOne} alt="" />
                     <h2 className='text-slate-800 dark:text-white text-2xl font-bold my-4'><span className='text-slate-300 text-4xl'>01 </span>Select Restaurant</h2>
