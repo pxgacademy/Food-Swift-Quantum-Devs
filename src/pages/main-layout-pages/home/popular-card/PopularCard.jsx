@@ -35,7 +35,7 @@ const burgers = [
 
 const PopularCard = () => {
   return (
-    <PageContainer>
+
       <div className="grid grid-cols-1 bg-gray-50 dark:bg-primaryColor md:grid-cols-2 lg:grid-cols-4 gap-6 p-6">
         {burgers.map((burger) => (
           <div
@@ -75,7 +75,6 @@ const PopularCard = () => {
           </div>
         ))}
       </div>
-    </PageContainer>
   );
 };
 

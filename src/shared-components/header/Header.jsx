@@ -6,7 +6,7 @@ import deliveryIcon from "/food-delivery.png";
 
 const Header = () => {
   return (
-    <header className="sticky top-0">
+    <header className="sticky top-0 z-50">
       <nav className="w-full max-w-[1600px] mx-auto py-5 px-5 md:px-8 lg:px-12 flex items-center justify-between bg-gray-100/80 dark:bg-gray-800/80 backdrop-blur">
         {/* left side nav */}
         <Link to="/">
