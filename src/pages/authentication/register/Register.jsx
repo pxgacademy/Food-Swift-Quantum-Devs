@@ -52,14 +52,14 @@ const Register = () => {
           </button>
         </div>
 
-        <div className="relative mb-4 border border-gray-300 rounded-lg cursor-pointer flex items-center justify-between">
+        <div className="relative mb-4 border border-gray-300 rounded-lg cursor-pointer flex items-center justify-between py-1 px-2">
           <input
             type="file"
             className="absolute inset-0 opacity-0 w-full h-full cursor-pointer"
             accept="image/*"
             onChange={handleFileChange}
           />
-          <span className="p-2 rounded-lg w-fit bg-base-300">Choose File</span>
+          <span className="py-1 px-2 rounded-lg w-fit bg-base-300">Choose File</span>
           <span className="text-sm">{fileName || "No file chosen"}</span>
         </div>
 

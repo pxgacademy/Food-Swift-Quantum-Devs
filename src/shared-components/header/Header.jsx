@@ -2,15 +2,19 @@ import React from "react";
 import ThemeMode from "../../components/theme-mode/ThemeMode";
 import Cart from "./Cart";
 import { Link } from "react-router-dom";
+import deliveryIcon from "/food-delivery.png";
 
 const Header = () => {
   return (
     <header className="sticky top-0">
-      <nav className="w-full max-w-[1600px] mx-auto py-5 px-5 md:px-8 lg:px-12 flex items-center justify-between bg-gray-100/80 dark:bg-gray-800/80 backdrop-blur  dark:text-primaryColor">
+      <nav className="w-full max-w-[1600px] mx-auto py-5 px-5 md:px-8 lg:px-12 flex items-center justify-between bg-gray-100/80 dark:bg-gray-800/80 backdrop-blur">
         {/* left side nav */}
         <Link to="/">
-          <div className="" role="button">
-            <h3 className="text-xl md:text-2xl font-semibold">Food Swift</h3>
+          <div className="flex items-center gap-x-3" role="button">
+            <img alt="icon" src={deliveryIcon} className="w-10 h-10" />
+            <h3 className="text-xl md:text-2xl font-semibold text-primaryColor">
+              Food Swift
+            </h3>
           </div>
         </Link>
 
