@@ -5,7 +5,6 @@ import PageContainer from "../../../components/containers/PageContainer";
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
-  const [darkMode, setDarkMode] = useState(false);
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
