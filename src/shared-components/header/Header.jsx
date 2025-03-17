@@ -8,9 +8,11 @@ const Header = () => {
     <header className="sticky top-0">
       <nav className="w-full max-w-[1600px] mx-auto py-5 px-5 md:px-8 lg:px-12 flex items-center justify-between bg-gray-100/80 dark:bg-gray-800/80 backdrop-blur  dark:text-primaryColor">
         {/* left side nav */}
-        <div>
-          <h3 className="text-xl md:text-2xl font-semibold">Food Swift</h3>
-        </div>
+        <Link to="/">
+          <div className="" role="button">
+            <h3 className="text-xl md:text-2xl font-semibold">Food Swift</h3>
+          </div>
+        </Link>
 
         {/* Right side nav */}
         <div className="flex items-center gap-x-5">
