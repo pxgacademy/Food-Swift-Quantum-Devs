@@ -1,5 +1,4 @@
 import PageContainer from "../../../../components/containers/PageContainer";
-import useContextValue from "../../../../hooks/useContextValue";
 
 import AtAGlance from "../at-a-glance/AtAGlance";
 import Banner from "../banner/Banner";
@@ -8,6 +7,7 @@ import HowToWork from "../how-to-work/HowToWork";
 import Restaurant from "../restaurant/Restaurant";
 import PopularCard from "../popular-card/PopularCard";
 import Subscribe from "../subscribe/Subscribe";
+import PatnerBiker from "../PatnerBiker/PatnerBiker";
 
 const Home = () => {
   return (
@@ -19,6 +19,7 @@ const Home = () => {
       <PopularCard />
       <AtAGlance></AtAGlance>
       <Subscribe></Subscribe>
+      <PatnerBiker></PatnerBiker>
     </PageContainer>
   );
 };
