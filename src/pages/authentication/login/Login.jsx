@@ -44,7 +44,7 @@ const Login = () => {
           </button>
         </div>
 
-        <button className="w-full py-2 bg-gradient-to-r from-purple-400 to-pink-400 text-white rounded font-medium hover:opacity-90 cursor-pointer">
+        <button className="w-full py-2 bg-gradient-to-r from-primaryColor to-secondaryColor text-white rounded font-medium hover:opacity-90 cursor-pointer">
           Login
         </button>
 
