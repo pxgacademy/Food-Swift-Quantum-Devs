@@ -1,8 +1,9 @@
+import { FaLongArrowAltRight } from "react-icons/fa";
 import { RxDotFilled } from "react-icons/rx";
 
 const PatnerBiker = () => {
   return (
-    <div className="md:flex justify-between  gap-5 mb-10">
+    <div className="md:flex justify-between  gap-5 lg:py-12 py-6">
       <div className="space-y-5">
         <h3 className="text-2xl lg:text-3xl  font-bold mb-8">
           Got a Restaurant? Become a Partner
@@ -28,6 +29,9 @@ const PatnerBiker = () => {
         <div>
           <button className="btn text-lg text-white md:text-xl bg-primaryColor hover:bg-[#F29F05] mt-8">
             Partner with us
+            <span>
+              <FaLongArrowAltRight />
+            </span>
           </button>
         </div>
       </div>
@@ -59,6 +63,9 @@ const PatnerBiker = () => {
         <div>
           <button className="btn text-lg text-white md:text-xl bg-primaryColor hover:bg-[#F29F05] mt-8">
             Become a Foodman
+            <span>
+              <FaLongArrowAltRight />
+            </span>
           </button>
         </div>
       </div>

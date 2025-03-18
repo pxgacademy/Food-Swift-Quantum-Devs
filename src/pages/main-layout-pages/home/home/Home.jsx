@@ -8,6 +8,7 @@ import Restaurant from "../restaurant/Restaurant";
 import PopularCard from "../popular-card/PopularCard";
 import Subscribe from "../subscribe/Subscribe";
 import PatnerBiker from "../PatnerBiker/PatnerBiker";
+import Faq from "../Faq/Faq";
 
 const Home = () => {
   return (
@@ -20,6 +21,7 @@ const Home = () => {
       <AtAGlance></AtAGlance>
       <Subscribe></Subscribe>
       <PatnerBiker></PatnerBiker>
+      <Faq></Faq>
     </PageContainer>
   );
 };
