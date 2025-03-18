@@ -1,5 +1,4 @@
 import React from "react";
-import PageContainer from "../../../../components/containers/PageContainer";
 import { FaHeart, FaShoppingCart, FaStar, FaRegStar } from "react-icons/fa";
 
 const foods = [

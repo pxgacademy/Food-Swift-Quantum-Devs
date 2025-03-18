@@ -2,12 +2,36 @@ import { useState } from "react";
 import { FaGoogle, FaEye, FaEyeSlash } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import PageContainer from "../../../components/containers/PageContainer";
+import useContextValue from "../../../hooks/useContextValue";
+import Swal from "sweetalert2";
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
+  const {signInUser} = useContextValue()
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
+  };
+
+  const handleLogin = async(event) => {
+    event.preventDefault();
+
+    const credentials = {
+      email: event.target.email.value,
+      password: event.target.password.value,
+    }
+
+    try {
+      const {user} = await signInUser(credentials.email, credentials.password)
+      console.log(user);
+    } catch (error) {
+      Swal.fire({
+        title: error.message,
+        icon: "error",
+      })
+    }
+
+    
   };
 
   return (
@@ -24,29 +48,33 @@ const Login = () => {
           Default Credentials
         </button>
 
-        <input
-          type="email"
-          placeholder="Enter your email"
-          className={`w-full p-2 mb-4 border border-gray-300 rounded bg-transparent focus:outline-none focus:ring-2 focus:ring-purple-300`}
-        />
-
-        <div className="relative mb-4">
+        <form onSubmit={handleLogin}>
           <input
-            type={showPassword ? "text" : "password"}
-            placeholder="Enter your password"
-            className={`w-full p-2 border border-gray-300 rounded bg-transparent  focus:outline-none focus:ring-2 focus:ring-purple-300`}
+            type="email"
+            placeholder="Enter your email"
+            name="email"
+            className={`w-full p-2 mb-4 border border-gray-300 rounded bg-transparent focus:outline-none focus:ring-2 focus:ring-purple-300`}
           />
-          <button
-            onClick={togglePasswordVisibility}
-            className={`absolute top-1/2 right-3 transform -translate-y-1/2`}
-          >
-            {showPassword ? <FaEyeSlash /> : <FaEye />}
-          </button>
-        </div>
 
-        <button className="w-full py-2 bg-gradient-to-r from-primaryColor to-secondaryColor text-white rounded font-medium hover:opacity-90 cursor-pointer">
-          Login
-        </button>
+          <div className="relative mb-4">
+            <input
+              type={showPassword ? "text" : "password"}
+              placeholder="Enter your password"
+              name="password"
+              className={`w-full p-2 border border-gray-300 rounded bg-transparent  focus:outline-none focus:ring-2 focus:ring-purple-300`}
+            />
+            <button
+              onClick={togglePasswordVisibility}
+              className={`absolute top-1/2 right-3 transform -translate-y-1/2`}
+            >
+              {showPassword ? <FaEyeSlash /> : <FaEye />}
+            </button>
+          </div>
+
+          <button className="w-full py-2 bg-gradient-to-r from-primaryColor to-secondaryColor text-white rounded font-medium hover:opacity-90 cursor-pointer">
+            Login
+          </button>
+        </form>
 
         <p className="text-center my-4">Or continue with</p>
 
