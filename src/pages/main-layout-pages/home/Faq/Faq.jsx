@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { BsArrowRight, BsArrowRightShort } from "react-icons/bs";
 import { FiMinus, FiPlus } from "react-icons/fi";
 
 const Faq = () => {
@@ -60,13 +61,16 @@ const Faq = () => {
     },
   ];
   return (
-    <div className="max-w-xl mx-auto mt-10">
+    <div className="max-w-[1600px] mx-auto lg:py-12 py-6">
+      <h3 className="text-center lg:text-5xl md:text-3xl text-2xl mb-10">
+        Frequently Asked Questions
+      </h3>
       {/* tabs */}
       <div className="flex gap-2 justify-center mb-5">
         <button
           className={`px-4 py-2 text-xl rounded ${
             activeTab === "customer"
-              ? "bg-red-500 text-white"
+              ? "bg-primaryColor hover:bg-[#F29F05] text-white"
               : "bg-gray-200 dark:text-black"
           }`}
           onClick={() => setActiveTab("customer")}
@@ -76,7 +80,7 @@ const Faq = () => {
         <button
           className={`px-4 py-2 text-xl rounded ${
             activeTab === "foodman"
-              ? "bg-red-500 text-white"
+              ? "bg-primaryColor hover:bg-[#F29F05] text-white"
               : "bg-gray-200 dark:text-black"
           }`}
           onClick={() => setActiveTab("foodman")}
@@ -91,7 +95,7 @@ const Faq = () => {
             {faqs.map((faq, index) => (
               <div key={index} className="py-2">
                 <button
-                  className="flex justify-items-start items-center w-full text-left text-xl font-medium text-gray-700 gap-3 dark:text-white"
+                  className="flex justify-items-start items-center w-full text-left text-xl font-medium gap-3 dark:text-white"
                   onClick={() => setOpenFAQ(openFAQ === index ? null : index)}
                 >
                   {openFAQ === index ? (
@@ -102,7 +106,7 @@ const Faq = () => {
                   {faq.question}
                 </button>
                 {openFAQ === index && (
-                  <p className="mt-2 ml-8 text-lg text-gray-600">{faq.ans}</p>
+                  <p className="mt-2 ml-8 text-lg">{faq.ans}</p>
                 )}
               </div>
             ))}
@@ -112,7 +116,7 @@ const Faq = () => {
             {foodMan.map((faq, index) => (
               <div key={index} className="py-2">
                 <button
-                  className="flex justify-items-start items-center w-full text-left text-xl font-medium text-gray-700 gap-3 dark:text-white"
+                  className="flex justify-items-start items-center w-full text-left text-xl font-medium gap-3 dark:text-white"
                   onClick={() => setOpenFAQ(openFAQ === index ? null : index)}
                 >
                   {openFAQ === index ? (
@@ -123,12 +127,21 @@ const Faq = () => {
                   {faq.question}
                 </button>
                 {openFAQ === index && (
-                  <p className="mt-2 ml-8 text-lg text-gray-600">{faq.ans}</p>
+                  <p className="mt-2 ml-8 text-lg ">{faq.ans}</p>
                 )}
               </div>
             ))}
           </div>
         )}
+      </div>
+      {/* btn view all FAQ */}
+      <div className="flex items-center justify-center mt-10">
+        <button className="flex items-center justify-between btn text-2xl text-white font-normal bg-primaryColor hover:bg-[#F29F05]">
+          View all FAQ
+          <span className="text-red-500 ml-2">
+            <BsArrowRight />
+          </span>
+        </button>
       </div>
     </div>
   );
