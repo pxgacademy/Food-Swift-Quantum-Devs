@@ -7,31 +7,34 @@ import Swal from "sweetalert2";
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
-  const {signInUser} = useContextValue()
+  const { signInUser } = useContextValue();
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
 
-  const handleLogin = async(event) => {
+  const handleLogin = async (event) => {
     event.preventDefault();
 
-    const credentials = {
-      email: event.target.email.value,
-      password: event.target.password.value,
-    }
+    const email = event.target.email.value;
+    const password = event.target.password.value;
 
     try {
-      const {user} = await signInUser(credentials.email, credentials.password)
-      console.log(user);
+      await signInUser(email, password);
+      Swal.fire({
+        title: "Logged In Successfully!",
+        icon: "success",
+        position: 'center',
+        showConfirmButton: false,
+        timer: 1500,
+      });
+      event.target.reset()
     } catch (error) {
       Swal.fire({
         title: error.message,
         icon: "error",
-      })
+      });
     }
-
-    
   };
 
   return (
