@@ -5,6 +5,7 @@ import PageContainer from "../../../components/containers/PageContainer";
 import { usePublicAPI_Link } from "../../../../../../RealTime-Task-Management-Application/task-management-application-frontend/src/hooks/useAPI_Links";
 import useContextValue from "../../../hooks/useContextValue";
 import Swal from "sweetalert2";
+import SocialLogin from "../social-login/SocialLogin";
 
 const IMG_API_LINK = import.meta.env.VITE_IMG_API;
 
@@ -151,10 +152,7 @@ const Register = () => {
 
         <p className="text-center my-4">Or continue with</p>
 
-        <button className="w-full flex items-center justify-center py-2 px-4 bg-white text-gray-800 border border-gray-300 rounded-lg hover:bg-gray-100 transition-all">
-          <FaGoogle className="mr-2 text-xl" />
-          <span className="font-semibold">Sign up with Google</span>
-        </button>
+        <SocialLogin>Register with Google</SocialLogin>
 
         <p className="text-center mt-4">
           Already have an account?

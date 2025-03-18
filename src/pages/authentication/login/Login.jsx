@@ -4,10 +4,11 @@ import { Link } from "react-router-dom";
 import PageContainer from "../../../components/containers/PageContainer";
 import useContextValue from "../../../hooks/useContextValue";
 import Swal from "sweetalert2";
+import SocialLogin from "../social-login/SocialLogin";
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
-  const { signInUser } = useContextValue();
+  const { signInUser, setUser } = useContextValue();
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
@@ -20,15 +21,16 @@ const Login = () => {
     const password = event.target.password.value;
 
     try {
-      await signInUser(email, password);
+      const { user } = await signInUser(email, password);
+      setUser(user);
       Swal.fire({
         title: "Logged In Successfully!",
         icon: "success",
-        position: 'center',
+        position: "center",
         showConfirmButton: false,
         timer: 1500,
       });
-      event.target.reset()
+      event.target.reset();
     } catch (error) {
       Swal.fire({
         title: error.message,
@@ -81,10 +83,7 @@ const Login = () => {
 
         <p className="text-center my-4">Or continue with</p>
 
-        <button className="w-full flex items-center justify-center py-2 px-4 bg-white text-gray-800 border border-gray-300 rounded-lg hover:bg-gray-100 transition-all">
-          <FaGoogle className="mr-2 text-xl" />
-          <span className="font-semibold">Sign in with Google</span>
-        </button>
+        <SocialLogin>Login with Google</SocialLogin>
 
         <p className="text-center mt-4">
           Don't have an account?
