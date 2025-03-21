@@ -6,6 +6,7 @@ import usePublicLink from "../../../hooks/usePublicLink";
 import useContextValue from "../../../hooks/useContextValue";
 import Swal from "sweetalert2";
 import SocialLogin from "../social-login/SocialLogin";
+import usePublicLink from "../../../hooks/usePublicLink";
 
 const IMG_API_LINK = import.meta.env.VITE_IMG_API;
 

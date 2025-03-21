@@ -6,28 +6,28 @@ const foods = [
     id: 1,
     name: "Bacon Cheeseburger",
     price: "9.9",
-    image: "/bacon-cheeseburger.png",
+    image: "https://i.ibb.co.com/bHrhrHP/Pan-Fried-Asparagus.jpg",
     rating: 4,
   },
   {
     id: 2,
     name: "Classic Cheeseburger",
     price: "8.9",
-    image: "/classic-cheeseburger.png",
+    image: "https://i.ibb.co.com/ZSh4gPd/Delicious-vegan-tacos.jpg",
     rating: 4,
   },
   {
     id: 3,
     name: "Chicken Burger",
     price: "7.9",
-    image: "/chicken-burger.png",
+    image: "https://i.ibb.co.com/Hg5D0L4/Vegan-Gluten-Free-Creamy-Spinach-Pasta.jpg",
     rating: 4,
   },
   {
     id: 4,
     name: "Chicken Sandwich",
     price: "5.9",
-    image: "/chicken-sandwich.png",
+    image: "https://i.ibb.co.com/CBcyYgK/Pumpkin-soup.jpg",
     rating: 4,
   },
 ];
@@ -47,7 +47,7 @@ const PopularCard = () => {
           <img
             src={food.image}
             alt={food.name}
-            className="w-24 h-24 object-contain mb-3"
+            className="object-contain rounded-md mb-3"
           />
           <h3 className="text-lg font-semibold">{food.name}</h3>
           <div className="flex justify-center my-2">
