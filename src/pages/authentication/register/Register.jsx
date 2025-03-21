@@ -2,10 +2,11 @@ import { useState } from "react";
 import { FaGoogle, FaEye, FaEyeSlash } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 import PageContainer from "../../../components/containers/PageContainer";
-import { usePublicAPI_Link } from "../../../../../../RealTime-Task-Management-Application/task-management-application-frontend/src/hooks/useAPI_Links";
+// import { usePublicAPI_Link } from "../../../../../../RealTime-Task-Management-Application/task-management-application-frontend/src/hooks/useAPI_Links";
 import useContextValue from "../../../hooks/useContextValue";
 import Swal from "sweetalert2";
 import SocialLogin from "../social-login/SocialLogin";
+import usePublicLink from "../../../hooks/usePublicLink";
 
 const IMG_API_LINK = import.meta.env.VITE_IMG_API;
 
@@ -13,7 +14,7 @@ const Register = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [fileName, setFileName] = useState("No file chosen");
   const { createUser, updateUser, setUser } = useContextValue();
-  const publicAPI = usePublicAPI_Link();
+  const publicAPI = usePublicLink()
   const navigate = useNavigate();
 
   const togglePasswordVisibility = (event) => {
