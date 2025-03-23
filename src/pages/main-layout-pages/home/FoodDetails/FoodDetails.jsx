@@ -42,7 +42,69 @@ const FoodDetails = () => {
       {/* Price */}
       <div className="md:col-span-1 bg-gradient-to-r from-red-500 via-green-950 to-cyan-600 p-[1px]">
         <div className="h-full w-full bg-white dark:bg-black">
-          Your Order section Price
+          <h3 className="text-2xl text-center pt-5">Your Order</h3>
+          {/* 1 Chicken tandori Special */}
+          <div className="px-3 mt-7">
+            <h3 className="font-bold flex items-center justify-between text-gray-600 dark:text-white">
+              <span> 1. Chicken Tandoori</span>
+              <span className="text-lg text-black dark:text-white">$99.00</span>
+            </h3>
+            {/* drink and butters */}
+            <div className="flex justify-between space-y-2 mt-2">
+              <div className="flex gap-3">
+                <input
+                  type="checkbox"
+                  className="checkbox validator"
+                  value={""}
+                />
+                <p>Drinks</p>
+              </div>
+              <p className="font-bold">$10.00</p>
+            </div>
+            <div className="flex justify-between">
+              <div className="flex gap-3">
+                <input
+                  type="checkbox"
+                  className="checkbox validator"
+                  value={""}
+                />
+                <p>Butter</p>
+              </div>
+              <p className="font-bold">$12.00</p>
+            </div>
+          </div>
+          {/* 2 Beef Tandori Special */}
+          <div className="px-3 mt-7">
+            <h3 className="font-bold flex items-center justify-between text-gray-600 dark:text-white">
+              <span> 2. Beef Tandoori</span>
+              <span className="text-lg text-black dark:text-white">
+                $120.00
+              </span>
+            </h3>
+            {/* drink and butters */}
+            <div className="flex justify-between space-y-2 mt-2">
+              <div className="flex gap-3">
+                <input
+                  type="checkbox"
+                  className="checkbox validator"
+                  value={""}
+                />
+                <p>Drinks</p>
+              </div>
+              <p className="font-bold">$10.00</p>
+            </div>
+            <div className="flex justify-between">
+              <div className="flex gap-3">
+                <input
+                  type="checkbox"
+                  className="checkbox validator"
+                  value={""}
+                />
+                <p>Butter</p>
+              </div>
+              <p className="font-bold">$12.00</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
