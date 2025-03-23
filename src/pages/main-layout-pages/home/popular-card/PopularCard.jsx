@@ -1,6 +1,7 @@
 import React from "react";
 import PageContainer from "../../../../components/containers/PageContainer";
 import { FaHeart, FaShoppingCart, FaStar, FaRegStar } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const foods = [
   {
@@ -64,9 +65,12 @@ const PopularCard = () => {
             ))}
           </div>
           <p className="text-xl font-bold">${food.price}</p>
-          <button className="btn bg-primary mt-4 flex items-center gap-2">
+          <Link
+            to={"/foodDetails"}
+            className="btn bg-primary mt-4 flex items-center gap-2"
+          >
             <FaShoppingCart /> Order Now
-          </button>
+          </Link>
         </div>
       ))}
     </div>
