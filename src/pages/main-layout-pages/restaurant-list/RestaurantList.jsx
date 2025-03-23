@@ -1,13 +1,13 @@
 import { IoMdStarOutline } from "react-icons/io";
-import restaurantOne from '../../../../assets/restaurant/restaurant1.png'
-import restaurantTwo from '../../../../assets/restaurant/restaurant2.png'
-import restaurantThree from '../../../../assets/restaurant/restaurant3.png'
-import restaurantFour from '../../../../assets/restaurant/restaurant4.png'
+import restaurantOne from '../../../assets/restaurant/restaurant1.png'
+import restaurantTwo from '../../../assets/restaurant/restaurant2.png'
+import restaurantThree from '../../../assets/restaurant/restaurant3.png'
+import restaurantFour from '../../../assets/restaurant/restaurant4.png'
 
 const RestaurantList = () => {
     return (
         <div className='lg:py-12 py-6'>
-            <h2 className="lg:text-3xl text-2xl font-bold text-center pb-8">Food Delivery from Dhaka Best Restaurants </h2>
+            <h2 className="lg:text-3xl text-2xl font-bold text-center pb-8">Find best restaurant in Dhaka </h2>
             <div className='grid lg:grid-cols-4 md:grid-cols-2 gird-cols-1 gap-6'>
                 <div className="rounded-md overflow-hidden border border-amber-100 bg-amber-50">
                     <div className="restaurantImg">
