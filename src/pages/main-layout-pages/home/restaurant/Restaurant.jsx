@@ -1,8 +1,8 @@
 import { IoMdStarOutline } from "react-icons/io";
-import restaurantOne from "../../../../assets/restaurant/restaurant1.png";
-import restaurantTwo from "../../../../assets/restaurant/restaurant2.png";
-import restaurantThree from "../../../../assets/restaurant/restaurant3.png";
-import restaurantFour from "../../../../assets/restaurant/restaurant4.png";
+import restaurantOne from '../../../../assets/restaurant/restaurant1.jpg'
+import restaurantTwo from '../../../../assets/restaurant/restaurant2.jpg'
+import restaurantThree from '../../../../assets/restaurant/restaurant3.jpg'
+import restaurantFour from '../../../../assets/restaurant/restaurant4.jpg'
 import SectionContainer from "../../../../components/containers/SectionContainer";
 import SectionTitle from "../../../../components/containers/SectionTitle";
 
