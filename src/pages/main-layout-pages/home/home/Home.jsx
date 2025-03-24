@@ -12,17 +12,15 @@ import Faq from "../Faq/Faq";
 const Home = () => {
   return (
     <PageContainer>
-      <Banner></Banner>
-      <HowToWork></HowToWork>
-      <City></City>
-      <Restaurant></Restaurant>
-      {/* Popular card Section */}
+      <Banner />
+      <HowToWork />
       <PopularCard />
       <Restaurant />
+      <City />
       <AtAGlance />
       <Subscribe />
       <PartnerBiker />
-      <Faq></Faq>
+      <Faq />
     </PageContainer>
   );
 };

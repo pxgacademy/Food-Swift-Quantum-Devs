@@ -12,8 +12,9 @@ import SectionTitle from "../../../../components/containers/SectionTitle";
 const City = () => {
   return (
     <SectionContainer>
-      <div className="lg:py-12 py-6">
+      <div>
         <SectionTitle>Find your city Restaurant</SectionTitle>
+
         <div className="grid lg:grid-cols-4 md:grid-cols-2 gird-cols-1 gap-6">
           <div className="rounded-md overflow-hidden">
             <div className="restaurantImg relative">
