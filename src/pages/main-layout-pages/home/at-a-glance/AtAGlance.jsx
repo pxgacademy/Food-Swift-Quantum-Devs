@@ -1,9 +1,11 @@
+import SectionContainer from "../../../../components/containers/SectionContainer";
+import SectionTitle from "../../../../components/containers/SectionTitle";
+
 const AtAGlance = () => {
   return (
-    <div className="lg:py-12 py-6">
-      <h2 className="lg:text-3xl text-2xl font-bold text-center pb-8">
-        At a Glance
-      </h2>
+    <SectionContainer>
+      <SectionTitle>At a Glance</SectionTitle>
+      
       <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-6">
         <div className=" shadow-sm shadow-slate-300 p-6 text-center rounded-2xl">
           <h3 className="text-[#F29F05]  text-5xl font-bold">976 +</h3>
@@ -18,7 +20,7 @@ const AtAGlance = () => {
           <p className="lg:text-3xl text-xl pt-3">Food Delivered</p>
         </div>
       </div>
-    </div>
+    </SectionContainer>
   );
 };
 

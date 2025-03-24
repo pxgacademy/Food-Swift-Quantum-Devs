@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { BsArrowRight, BsArrowRightShort } from "react-icons/bs";
 import { FiMinus, FiPlus } from "react-icons/fi";
+import SectionContainer from "../../../../components/containers/SectionContainer";
 
 const Faq = () => {
   const [activeTab, setActiveTab] = useState("customer");
@@ -61,10 +62,10 @@ const Faq = () => {
     },
   ];
   return (
-    <div className="max-w-[1600px] mx-auto lg:py-12 py-6">
-      <h3 className="text-center lg:text-5xl md:text-3xl text-2xl mb-10">
+  <SectionContainer>
+    <h2 className="text-center lg:text-5xl md:text-3xl text-2xl mb-10">
         Frequently Asked Questions
-      </h3>
+      </h2>
       {/* tabs */}
       <div className="flex gap-2 justify-center mb-5">
         <button
@@ -143,7 +144,8 @@ const Faq = () => {
           </span>
         </button>
       </div>
-    </div>
+  </SectionContainer>
+    
   );
 };
 

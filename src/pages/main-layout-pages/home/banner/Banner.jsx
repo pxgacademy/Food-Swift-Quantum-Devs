@@ -3,7 +3,7 @@ import SectionContainer from "../../../../components/containers/SectionContainer
 
 const Banner = () => {
   return (
-    <SectionContainer className="border" >
+    <SectionContainer>
       <div className="flex md:flex-nowrap flex-wrap lg:gap-24 gap-12 justify-between items-center content-between">
         <div className="lg:w-1/2 w-full">
           <h2 className="lg:text-6xl md:text-4xl text-3xl">

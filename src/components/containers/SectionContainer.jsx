@@ -4,11 +4,9 @@ const SectionContainer = ({
   children,
   className = "",
   padding = "px-5 md:px-8 lg:px-12",
-  margin = "",
+  margin = "mb-16 md:mb-18 lg:mb-24",
 }) => {
-  return (
-    <div className={`${className} ${padding} ${margin} `}>{children}</div>
-  );
+  return <div className={`${className} ${padding} ${margin} `}>{children}</div>;
 };
 
 SectionContainer.propTypes = {
