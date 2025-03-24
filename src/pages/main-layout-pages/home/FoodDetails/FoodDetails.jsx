@@ -1,13 +1,13 @@
 import { useState } from "react";
 
 const FoodDetails = () => {
-  const [quentity, setQuentity] = useState(1);
+  const [quantity, setQuantity] = useState(1);
   const handelOdd = () => {
-    if (quentity === 1) return;
-    setQuentity(quentity - 1);
+    if (quantity === 1) return;
+    setQuantity(quantity - 1);
   };
   const handelEven = () => {
-    setQuentity(quentity + 1);
+    setQuantity(quantity + 1);
   };
   return (
     <div className="grid md:grid-cols-3 gap-5 text-black dark:text-white mb-10">
@@ -75,7 +75,7 @@ const FoodDetails = () => {
           <input
             type="number"
             className="input w-[60px] text-center text-xl"
-            value={quentity}
+            value={quantity}
           />
           <button onClick={handelEven} className="text-3xl cursor-pointer">
             +
