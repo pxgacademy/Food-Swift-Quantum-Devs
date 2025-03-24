@@ -10,7 +10,6 @@ import PartnerBiker from "../partnerBiker/PartnerBiker";
 import Faq from "../Faq/Faq";
 
 const Home = () => {
-  // comment
   return (
     <PageContainer>
       <Banner />
