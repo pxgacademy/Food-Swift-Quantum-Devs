@@ -12,16 +12,11 @@ import Faq from "../Faq/Faq";
 const Home = () => {
   return (
     <PageContainer>
-<<<<<<< HEAD
-      <Banner />
-      <HowToWork />
-=======
       <Banner></Banner>
       <HowToWork></HowToWork>
       <City></City>
       <Restaurant></Restaurant>
       {/* Popular card Section */}
->>>>>>> 58c652f4c1cd38b76f3588ae032763f3de303628
       <PopularCard />
       <Restaurant />
       <AtAGlance />
