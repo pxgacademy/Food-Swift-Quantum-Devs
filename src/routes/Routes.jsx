@@ -4,7 +4,6 @@ import Home from "../pages/main-layout-pages/home/home/Home";
 import Login from "../pages/authentication/login/Login";
 import Register from "../pages/authentication/register/Register";
 import FoodDetails from "../pages/main-layout-pages/home/FoodDetails/FoodDetails";
-import PageContainer from "../components/containers/PageContainer";
 
 export const router = createBrowserRouter([
   {
@@ -17,11 +16,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/foodDetails",
-        element: (
-          <PageContainer>
-            <FoodDetails></FoodDetails>
-          </PageContainer>
-        ),
+        element: <FoodDetails/>
       },
       {
         path: "/login",
@@ -33,5 +28,4 @@ export const router = createBrowserRouter([
       },
     ],
   },
-
 ]);

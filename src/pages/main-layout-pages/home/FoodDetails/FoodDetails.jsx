@@ -1,4 +1,5 @@
 import { useState } from "react";
+import SectionContainer from "../../../../components/containers/SectionContainer";
 
 const FoodDetails = () => {
   const [quantity, setQuantity] = useState(1);
@@ -10,7 +11,8 @@ const FoodDetails = () => {
     setQuantity(quantity + 1);
   };
   return (
-    <div className="grid md:grid-cols-3 gap-5 text-black dark:text-white mb-10">
+    <SectionContainer margin="my-10" >
+      <div className="grid md:grid-cols-3 gap-5 text-black dark:text-white mb-10">
       {/* immag and description section */}
       <div className="md:col-span-2">
         {/* immag */}
@@ -101,6 +103,8 @@ const FoodDetails = () => {
           </button>
         </div>
       </div>
+
+
       {/* Order and Price section */}
       <div className="md:col-span-1 bg-gradient-to-r from-red-500 via-green-950 to-cyan-600 p-[1px]">
         <div className="h-full w-full bg-white dark:bg-black relative">
@@ -191,6 +195,7 @@ const FoodDetails = () => {
         </div>
       </div>
     </div>
+    </SectionContainer>
   );
 };
 

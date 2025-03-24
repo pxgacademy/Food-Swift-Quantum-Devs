@@ -3,7 +3,7 @@ import { FaFacebook, FaTwitter, FaInstagram } from "react-icons/fa";
 
 const Footer = () => {
   return (
-    <footer className="w-full max-w-[1600px] mx-auto py-5 px-5 md:px-8 lg:px-12 bg-gray-100 dark:bg-gray-800">
+    <footer className="w-full max-w-[1600px] mx-auto pt-14 pb-5 px-5 md:px-8 lg:px-12 bg-gray-100 dark:bg-gray-800">
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 text-center md:text-left ">
         {/* Left Section */}
         <div>
@@ -57,16 +57,8 @@ const Footer = () => {
         </div>
       </div>
       {/* Footer Bottom */}
-      <div className="mx-auto mt-10 border-t border-gray-700 pt-4 text-center text-sm md:flex md:justify-between">
-        <p>Copyright © 2022. Quickeat. All rights reserved.</p>
-        <div className="flex justify-center md:justify-end space-x-4 mt-2 md:mt-0">
-          <Link to="" className="hover:text-yellow-500">
-            Privacy Policy
-          </Link>
-          <Link to="" className="hover:text-yellow-500">
-            Terms & Services
-          </Link>
-        </div>
+      <div className="mt-10 border-t border-gray-700 pt-4 text-center text-sm">
+        <p>Copyright © 2025. All rights reserved - Food Swift</p>
       </div>
     </footer>
   );
