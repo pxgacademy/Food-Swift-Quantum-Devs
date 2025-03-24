@@ -1,5 +1,7 @@
 import React from "react";
 import { FaHeart, FaShoppingCart, FaStar, FaRegStar } from "react-icons/fa";
+import SectionContainer from "../../../components/containers/SectionContainer";
+import SectionTitle from "../../../components/containers/SectionTitle";
 
 const foods = [
   {
@@ -35,7 +37,9 @@ const foods = [
 
 const FoodItemList = () => {
     return (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:py-12 py-6">
+        <SectionContainer margin="my-12">
+          <SectionTitle>Restaurant food item list</SectionTitle>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               {foods.map((food) => (
                 <div
                   key={food.id}
@@ -70,6 +74,8 @@ const FoodItemList = () => {
                 </div>
               ))}
             </div>
+        </SectionContainer>
+        
     );
 };
 
