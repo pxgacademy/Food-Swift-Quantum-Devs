@@ -2,7 +2,7 @@ import { FaLongArrowAltRight } from "react-icons/fa";
 import { RxDotFilled } from "react-icons/rx";
 import SectionContainer from "../../../../components/containers/SectionContainer";
 
-const PatnerBiker = () => {
+const PartnerBiker = () => {
   return (
     <SectionContainer className="md:flex justify-between gap-5">
       <div className="space-y-5">
@@ -74,4 +74,4 @@ const PatnerBiker = () => {
   );
 };
 
-export default PatnerBiker;
+export default PartnerBiker;

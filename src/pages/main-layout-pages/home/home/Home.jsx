@@ -1,14 +1,12 @@
 import PageContainer from "../../../../components/containers/PageContainer";
-
 import AtAGlance from "../at-a-glance/AtAGlance";
 import Banner from "../banner/Banner";
 import City from "../city/City";
 import HowToWork from "../how-to-work/HowToWork";
-
 import Restaurant from "../restaurant/Restaurant";
 import PopularCard from "../popular-card/PopularCard";
 import Subscribe from "../subscribe/Subscribe";
-import PatnerBiker from "../PatnerBiker/PatnerBiker";
+import PartnerBiker from "../partnerBiker/PartnerBiker";
 import Faq from "../Faq/Faq";
 
 const Home = () => {
@@ -20,9 +18,10 @@ const Home = () => {
       <Restaurant></Restaurant>
       {/* Popular card Section */}
       <PopularCard />
-      <AtAGlance></AtAGlance>
-      <Subscribe></Subscribe>
-      <PatnerBiker></PatnerBiker>
+      <Restaurant />
+      <AtAGlance />
+      <Subscribe />
+      <PartnerBiker />
       <Faq></Faq>
     </PageContainer>
   );
