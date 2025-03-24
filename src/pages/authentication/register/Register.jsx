@@ -6,7 +6,6 @@ import usePublicLink from "../../../hooks/usePublicLink";
 import useContextValue from "../../../hooks/useContextValue";
 import Swal from "sweetalert2";
 import SocialLogin from "../social-login/SocialLogin";
-import usePublicLink from "../../../hooks/usePublicLink";
 
 const IMG_API_LINK = import.meta.env.VITE_IMG_API;
 
@@ -14,7 +13,7 @@ const Register = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [fileName, setFileName] = useState("No file chosen");
   const { createUser, updateUser, setUser } = useContextValue();
-  const publicAPI = usePublicLink()
+  const publicAPI = usePublicLink();
   const navigate = useNavigate();
 
   const togglePasswordVisibility = (event) => {

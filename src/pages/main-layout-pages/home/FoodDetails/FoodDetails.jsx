@@ -76,6 +76,7 @@ const FoodDetails = () => {
             type="number"
             className="input w-[60px] text-center text-xl"
             value={quentity}
+            readOnly
           />
           <button onClick={handelEven} className="text-3xl cursor-pointer">
             +

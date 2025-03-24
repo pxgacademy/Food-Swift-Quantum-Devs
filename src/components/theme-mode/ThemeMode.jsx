@@ -9,12 +9,12 @@ const ThemeMode = ({ className = "" }) => {
   const { isDark, setIsDark } = useContextValue();
 
   useEffect(() => {
-        setThemeMode();
+    setThemeMode();
   }, []);
 
   const setThemeMode = () => {
     const theme = localStorage.getItem("theme");
-    console.log(theme);
+    // console.log(theme);
     if (theme) {
       setIsDark(theme === "dark");
       document.documentElement.setAttribute("data-theme", theme);
