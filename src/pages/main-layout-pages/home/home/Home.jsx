@@ -2,6 +2,7 @@ import PageContainer from "../../../../components/containers/PageContainer";
 
 import AtAGlance from "../at-a-glance/AtAGlance";
 import Banner from "../banner/Banner";
+import City from "../city/City";
 import HowToWork from "../how-to-work/HowToWork";
 
 import Restaurant from "../restaurant/Restaurant";
@@ -15,6 +16,7 @@ const Home = () => {
     <PageContainer>
       <Banner></Banner>
       <HowToWork></HowToWork>
+      <City></City>
       <Restaurant></Restaurant>
       {/* Popular card Section */}
       <PopularCard />
