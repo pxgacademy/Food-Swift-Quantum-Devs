@@ -7,13 +7,14 @@ import restaurantFive from '../../../assets/restaurant/restaurant5.jpg'
 import restaurantSix from '../../../assets/restaurant/restaurant6.jpg'
 import restaurantSeven from '../../../assets/restaurant/restaurant7.jpg'
 import restaurantEight from '../../../assets/restaurant/restaurant8.jpg'
+import { Link } from "react-router-dom";
 
 const RestaurantList = () => {
     return (
         <div className='lg:py-12 py-6'>
             <h2 className="lg:text-3xl text-2xl font-bold text-center pb-8">Find best restaurant in Dhaka </h2>
             <div className='grid lg:grid-cols-4 md:grid-cols-2 gird-cols-1 gap-6'>
-                <div className="rounded-md overflow-hidden border border-amber-100 bg-amber-50">
+                <Link to='/foodList' className="rounded-md overflow-hidden border border-amber-100 bg-amber-50">
                     <div className="restaurantImg">
                         <img src={restaurantOne} alt="" />
                     </div>
@@ -26,8 +27,8 @@ const RestaurantList = () => {
                             <p className="flex gap-1 items-center text-slate-700"><IoMdStarOutline className="text-yellow-500 text-xl" /> 4.5</p>
                         </div>
                     </div>
-                </div>
-                <div className="rounded-md overflow-hidden border border-amber-100 bg-amber-50">
+                </Link>
+                <Link to='/foodList' className="rounded-md overflow-hidden border border-amber-100 bg-amber-50">
                     <div className="restaurantImg">
                         <img src={restaurantTwo} alt="" />
                     </div>
@@ -40,8 +41,8 @@ const RestaurantList = () => {
                             <p className="flex gap-1 items-center text-slate-700"><IoMdStarOutline className="text-yellow-500 text-xl" /> 4.5</p>
                         </div>
                     </div>
-                </div>
-                <div className="rounded-md overflow-hidden border border-amber-100 bg-amber-50">
+                </Link>
+                <Link to='/foodList' className="rounded-md overflow-hidden border border-amber-100 bg-amber-50">
                     <div className="restaurantImg">
                         <img src={restaurantThree} alt="" />
                     </div>
@@ -54,8 +55,8 @@ const RestaurantList = () => {
                             <p className="flex gap-1 items-center text-slate-700"><IoMdStarOutline className="text-yellow-500 text-xl" /> 4.5</p>
                         </div>
                     </div>
-                </div>
-                <div className="rounded-md overflow-hidden border border-amber-100 bg-amber-50">
+                </Link>
+                <Link to='/foodList' className="rounded-md overflow-hidden border border-amber-100 bg-amber-50">
                     <div className="restaurantImg">
                         <img src={restaurantFour} alt="" />
                     </div>
@@ -68,8 +69,8 @@ const RestaurantList = () => {
                             <p className="flex gap-1 items-center text-slate-700"><IoMdStarOutline className="text-yellow-500 text-xl" /> 4.5</p>
                         </div>
                     </div>
-                </div>
-                <div className="rounded-md overflow-hidden border border-amber-100 bg-amber-50">
+                </Link>
+                <Link to='/foodList' className="rounded-md overflow-hidden border border-amber-100 bg-amber-50">
                     <div className="restaurantImg">
                         <img src={restaurantFive} alt="" />
                     </div>
@@ -82,8 +83,8 @@ const RestaurantList = () => {
                             <p className="flex gap-1 items-center text-slate-700"><IoMdStarOutline className="text-yellow-500 text-xl" /> 4.5</p>
                         </div>
                     </div>
-                </div>
-                <div className="rounded-md overflow-hidden border border-amber-100 bg-amber-50">
+                </Link>
+                <Link to='/foodList' className="rounded-md overflow-hidden border border-amber-100 bg-amber-50">
                     <div className="restaurantImg">
                         <img src={restaurantSix} alt="" />
                     </div>
@@ -96,8 +97,8 @@ const RestaurantList = () => {
                             <p className="flex gap-1 items-center text-slate-700"><IoMdStarOutline className="text-yellow-500 text-xl" /> 4.5</p>
                         </div>
                     </div>
-                </div>
-                <div className="rounded-md overflow-hidden border border-amber-100 bg-amber-50">
+                </Link>
+                <Link to='/foodList' className="rounded-md overflow-hidden border border-amber-100 bg-amber-50">
                     <div className="restaurantImg">
                         <img src={restaurantSeven} alt="" />
                     </div>
@@ -110,8 +111,8 @@ const RestaurantList = () => {
                             <p className="flex gap-1 items-center text-slate-700"><IoMdStarOutline className="text-yellow-500 text-xl" /> 4.5</p>
                         </div>
                     </div>
-                </div>
-                <div className="rounded-md overflow-hidden border border-amber-100 bg-amber-50">
+                </Link>
+                <Link to='/foodList' className="rounded-md overflow-hidden border border-amber-100 bg-amber-50">
                     <div className="restaurantImg">
                         <img src={restaurantEight} alt="" />
                     </div>
@@ -124,7 +125,7 @@ const RestaurantList = () => {
                             <p className="flex gap-1 items-center text-slate-700"><IoMdStarOutline className="text-yellow-500 text-xl" /> 4.5</p>
                         </div>
                     </div>
-                </div>
+                </Link>
 
             </div>
         </div>
