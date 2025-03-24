@@ -5,11 +5,11 @@ import restaurantThree from "../../../../assets/restaurant/restaurant3.jpg";
 import restaurantFour from "../../../../assets/restaurant/restaurant4.jpg";
 import SectionContainer from "../../../../components/containers/SectionContainer";
 import SectionTitle from "../../../../components/containers/SectionTitle";
-import PageContainer from "../../../../components/containers/PageContainer";
+
 
 const Restaurant = () => {
   return (
-    <PageContainer>
+
       <SectionContainer>
         <SectionTitle>Dhaka Best Restaurants</SectionTitle>
 
@@ -88,7 +88,6 @@ const Restaurant = () => {
           </div>
         </div>
       </SectionContainer>
-    </PageContainer>
   );
 };
 
