@@ -9,14 +9,14 @@ import restaurantSeven from "../../../assets/restaurant/restaurant7.jpg";
 import restaurantEight from "../../../assets/restaurant/restaurant8.jpg";
 import { Link } from "react-router-dom";
 import PageContainer from "../../../components/containers/PageContainer";
+import SectionContainer from "../../../components/containers/SectionContainer";
+import SectionTitle from "../../../components/containers/SectionTitle";
 
 const RestaurantList = () => {
   return (
     <PageContainer>
-      <div className="lg:py-12 py-6">
-        <h2 className="lg:text-3xl text-2xl font-bold text-center pb-8">
-          Find best restaurant in Dhaka{" "}
-        </h2>
+      <SectionContainer margin="my-12">
+        <SectionTitle>Find best restaurant in Dhaka</SectionTitle>
         <div className="grid lg:grid-cols-4 md:grid-cols-2 gird-cols-1 gap-6">
           <Link
             to="/foodList"
@@ -187,7 +187,7 @@ const RestaurantList = () => {
             </div>
           </Link>
         </div>
-      </div>
+      </SectionContainer>
     </PageContainer>
   );
 };
