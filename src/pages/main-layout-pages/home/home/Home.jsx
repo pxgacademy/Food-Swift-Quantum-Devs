@@ -1,27 +1,26 @@
 import PageContainer from "../../../../components/containers/PageContainer";
-
 import AtAGlance from "../at-a-glance/AtAGlance";
 import Banner from "../banner/Banner";
+import City from "../city/City";
 import HowToWork from "../how-to-work/HowToWork";
-
 import Restaurant from "../restaurant/Restaurant";
 import PopularCard from "../popular-card/PopularCard";
 import Subscribe from "../subscribe/Subscribe";
-import PatnerBiker from "../PatnerBiker/PatnerBiker";
+import PartnerBiker from "../partnerBiker/PartnerBiker";
 import Faq from "../Faq/Faq";
 
 const Home = () => {
   return (
     <PageContainer>
-      <Banner></Banner>
-      <HowToWork></HowToWork>
-      <Restaurant></Restaurant>
-      {/* Popular card Section */}
+      <Banner />
+      <HowToWork />
       <PopularCard />
-      <AtAGlance></AtAGlance>
-      <Subscribe></Subscribe>
-      <PatnerBiker></PatnerBiker>
-      <Faq></Faq>
+      <Restaurant />
+      <City />
+      <AtAGlance />
+      <Subscribe />
+      <PartnerBiker />
+      <Faq />
     </PageContainer>
   );
 };
