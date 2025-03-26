@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { FaFacebook, FaTwitter, FaInstagram } from "react-icons/fa";
 
 const Footer = () => {
+  // This is footer section
   return (
     <footer className="w-full max-w-[1600px] mx-auto pt-14 pb-5 px-5 md:px-8 lg:px-12 bg-gray-100 dark:bg-gray-800">
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 text-center md:text-left ">
