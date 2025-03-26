@@ -9,15 +9,11 @@ const Footer = () => {
         {/* Left Section */}
         <div>
           <div className="flex w-16 h-16 items-center gap-3">
-            {/* Testing */}
-            {/* Testing 2 */}
-            {/* Testing 3 */}
             <img src={footerImage} alt="" />
             <h2 className="text-3xl font-bold flex justify-center md:justify-start items-center gap-2">
             Food Swift
           </h2>
           </div>
-          
           <p className="mt-4 text-lg">
             Vitae congue mauris rhoncus aenean. Enim nulla aliquet porttitor
             lacus luctus accumsan tortor posuere.
