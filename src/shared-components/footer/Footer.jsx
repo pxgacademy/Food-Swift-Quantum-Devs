@@ -11,6 +11,7 @@ const Footer = () => {
           <div className="flex w-16 h-16 items-center gap-3">
             {/* Testing */}
             {/* Testing 2 */}
+            {/* Testing 3 */}
             <img src={footerImage} alt="" />
             <h2 className="text-3xl font-bold flex justify-center md:justify-start items-center gap-2">
             Food Swift
