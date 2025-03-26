@@ -8,6 +8,8 @@ import { IoSunny } from "react-icons/io5";
 const ThemeMode = ({ className = "" }) => {
   const { isDark, setIsDark } = useContextValue();
 
+  // TODO: Added else
+
   useEffect(() => {
     const setThemeMode = () => {
       const theme = localStorage.getItem("theme");
