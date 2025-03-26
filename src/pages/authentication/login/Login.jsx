@@ -5,10 +5,17 @@ import PageContainer from "../../../components/containers/PageContainer";
 import useContextValue from "../../../hooks/useContextValue";
 import Swal from "sweetalert2";
 import SocialLogin from "../social-login/SocialLogin";
+import usePublicLink from "../../../hooks/usePublicLink";
+import { TbFlowerFilled } from "react-icons/tb";
 
 const Login = () => {
+  const publicAPI = usePublicLink();
   const [showPassword, setShowPassword] = useState(false);
   const { signInUser, setUser } = useContextValue();
+  const [isLoading, setIsLoading] = useState(false);
+  const [loginTimes, setLoginTimes] = useState(1);
+  const [isBlock, setIsBlock] = useState(false);
+  const [isError, setIsError] = useState(false);
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
@@ -16,11 +23,17 @@ const Login = () => {
 
   const handleLogin = async (event) => {
     event.preventDefault();
+    setIsError(false);
 
     const email = event.target.email.value;
     const password = event.target.password.value;
 
     try {
+      if (loginTimes > 3) {
+        await publicAPI.patch(`/users/block-req-one/${email}`, {});
+        setIsBlock(true);
+        return;
+      }
       const { user } = await signInUser(email, password);
       setUser(user);
       Swal.fire({
@@ -32,10 +45,25 @@ const Login = () => {
       });
       event.target.reset();
     } catch (error) {
-      Swal.fire({
-        title: error.message,
-        icon: "error",
-      });
+      const errorMessage = error.message;
+      const message = "Firebase: Error (auth/invalid-credential).";
+
+      if (errorMessage === message) setIsError(true);
+    }
+
+    setLoginTimes(loginTimes + 1);
+  };
+
+  const checkIsBlock = async (email) => {
+    if (email === "" || !email.includes("@")) return;
+    setIsLoading(true);
+    setIsBlock(false);
+    try {
+      const { data } = await publicAPI.get(`/users/isBlocked/${email}`);
+      console.log(data);
+      setIsBlock(data?.isBlock);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -55,9 +83,11 @@ const Login = () => {
 
         <form onSubmit={handleLogin}>
           <input
+            onBlur={(e) => checkIsBlock(e.target.value)}
             type="email"
             placeholder="Enter your email"
             name="email"
+            required
             className={`w-full p-2 mb-4 border border-gray-300 rounded bg-transparent focus:outline-none focus:ring-2 focus:ring-purple-300`}
           />
 
@@ -66,6 +96,7 @@ const Login = () => {
               type={showPassword ? "text" : "password"}
               placeholder="Enter your password"
               name="password"
+              required
               className={`w-full p-2 border border-gray-300 rounded bg-transparent  focus:outline-none focus:ring-2 focus:ring-purple-300`}
             />
             <button
@@ -76,8 +107,30 @@ const Login = () => {
             </button>
           </div>
 
-          <button className="w-full py-2 bg-gradient-to-r from-primaryColor to-secondaryColor text-white rounded font-medium hover:opacity-90 cursor-pointer">
-            Login
+          {isError && (
+            <p className="text-error mb-2">Invalid email or password</p>
+          )}
+
+          {isBlock && (
+            <p className="text-error mb-2">
+              This email has been temporarily blocked
+            </p>
+          )}
+
+          <button
+            disabled={isBlock || isLoading}
+            className="w-full min-h-10 flex items-center justify-center py-2 bg-gradient-to-r from-primaryColor to-secondaryColor text-white rounded font-medium hover:opacity-90 cursor-pointer text-center disabled:cursor-not-allowed"
+          >
+            {isLoading ? (
+              <span
+                style={{ animationDuration: "2.5s" }}
+                className="animate-spin text-2xl"
+              >
+                <TbFlowerFilled />
+              </span>
+            ) : (
+              "Login"
+            )}
           </button>
         </form>
 

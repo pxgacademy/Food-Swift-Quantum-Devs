@@ -7,14 +7,13 @@ import useContextValue from "../../../hooks/useContextValue";
 import Swal from "sweetalert2";
 import SocialLogin from "../social-login/SocialLogin";
 
-
 const IMG_API_LINK = import.meta.env.VITE_IMG_API;
 
 const Register = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [fileName, setFileName] = useState("No file chosen");
   const { createUser, updateUser, setUser } = useContextValue();
-  const publicAPI = usePublicLink()
+  const publicAPI = usePublicLink();
   const navigate = useNavigate();
 
   const togglePasswordVisibility = (event) => {
@@ -61,10 +60,12 @@ const Register = () => {
       await updateUser({ displayName: name, photoURL: image });
       setUser(user);
 
-      // TODO: Remove the condition when implementing backends for users.
-      if (user) return console.log(user);
-
-      const { data } = await publicAPI.post("/users", { name, email, image });
+      const { data } = await publicAPI.post("/users", {
+        name,
+        email,
+        image,
+        isBlock: false,
+      });
 
       if (data?.insertedId) {
         Swal.fire({
