@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { FaGoogle, FaEye, FaEyeSlash } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import PageContainer from "../../../components/containers/PageContainer";
 import useContextValue from "../../../hooks/useContextValue";
 import Swal from "sweetalert2";
@@ -10,6 +10,7 @@ import { TbFlowerFilled } from "react-icons/tb";
 
 const Login = () => {
   const publicAPI = usePublicLink();
+  const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
   const { signInUser, setUser } = useContextValue();
   const [isLoading, setIsLoading] = useState(false);
@@ -44,6 +45,7 @@ const Login = () => {
         timer: 1500,
       });
       event.target.reset();
+      navigate("/");
     } catch (error) {
       const errorMessage = error.message;
       const message = "Firebase: Error (auth/invalid-credential).";
