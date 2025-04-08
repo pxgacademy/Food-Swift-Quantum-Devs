@@ -1,6 +1,8 @@
 import { FaLongArrowAltRight } from "react-icons/fa";
 import { RxDotFilled } from "react-icons/rx";
 import SectionContainer from "../../../../components/containers/SectionContainer";
+import Btn_partnerWithUs from "../../../../components/buttons/btn_partnerWithUs";
+import Btn_becomeFoodman from "../../../../components/buttons/Btn_becomeFoodman";
 
 const PartnerBiker = () => {
   return (
@@ -28,12 +30,7 @@ const PartnerBiker = () => {
           Increase your sales through collaborative campaigns
         </p>
         <div>
-          <button className="btn text-lg text-white md:text-xl bg-primaryColor hover:bg-[#F29F05] mt-8">
-            Partner with us
-            <span>
-              <FaLongArrowAltRight />
-            </span>
-          </button>
+        <Btn_partnerWithUs/>
         </div>
       </div>
       <div className="p-4">
@@ -62,12 +59,7 @@ const PartnerBiker = () => {
           Always get your payment right on time!
         </p>
         <div>
-          <button className="btn text-lg text-white md:text-xl bg-primaryColor hover:bg-[#F29F05] mt-8">
-            Become a Foodman
-            <span>
-              <FaLongArrowAltRight />
-            </span>
-          </button>
+          <Btn_becomeFoodman/>
         </div>
       </div>
     </SectionContainer>
