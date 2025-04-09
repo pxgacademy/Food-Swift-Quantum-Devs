@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const Btn_partnerWithUs = () => {
   return (
-    <Link>
+    <Link to='restaurant-form' >
       <button className="btn text-lg text-white md:text-xl bg-primaryColor hover:bg-[#F29F05] mt-8">
         Partner with us
         <span>
