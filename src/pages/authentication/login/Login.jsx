@@ -62,7 +62,6 @@ const Login = () => {
     setIsBlock(false);
     try {
       const { data } = await publicAPI.get(`/users/isBlocked/${email}`);
-      console.log(data);
       setIsBlock(data?.isBlock);
     } finally {
       setIsLoading(false);

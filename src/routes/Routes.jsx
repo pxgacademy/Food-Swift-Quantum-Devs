@@ -6,6 +6,7 @@ import Register from "../pages/authentication/register/Register";
 import RestaurantList from "../pages/main-layout-pages/restaurant-list/RestaurantList";
 import FoodItemList from "../pages/main-layout-pages/food-item-list/foodItemList";
 import FoodDetails from "../pages/main-layout-pages/home/FoodDetails/FoodDetails";
+import Restaurant_form from "../pages/main-layout-pages/forms/restaurant_form";
 
 export const router = createBrowserRouter([
   {
@@ -35,6 +36,10 @@ export const router = createBrowserRouter([
       {
         path: "/foodList",
         element: <FoodItemList />,
+      },
+      {
+        path: "restaurant-form",
+        element: <Restaurant_form />,
       },
     ],
   },
