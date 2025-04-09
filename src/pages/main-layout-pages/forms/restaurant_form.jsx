@@ -8,13 +8,14 @@ import SectionTitle from "../../../components/containers/SectionTitle";
 import Swal from "sweetalert2";
 import usePublicLink from "../../../hooks/usePublicLink";
 import usePrivateLink from "../../../hooks/usePrivateLink";
-import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const IMG_API_LINK = import.meta.env.VITE_IMG_API;
 
 const Restaurant_form = () => {
   const publicAPI = usePublicLink();
-  const privateAPI = usePrivateLink()
+  const privateAPI = usePrivateLink();
+  const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -31,7 +32,6 @@ const Restaurant_form = () => {
     bannerData.append("image", banner);
 
     try {
-      /*
       const logoResponse = await publicAPI.post(IMG_API_LINK, logoData, {
         headers: {
           "Content-Type": "multipart/form-data",
@@ -54,8 +54,6 @@ const Restaurant_form = () => {
           icon: "error",
           confirmButtonText: "Okay!",
         });
-
-        */
 
       const name = form.name.value;
       const phone = form.phone.value;
@@ -83,12 +81,16 @@ const Restaurant_form = () => {
         closing_time,
       };
 
-
-      const { data } = await axios.post("/ax", {abd: 'hitting'});
-
-      console.log(data);
-
-
+      const { data } = await privateAPI.post("/restaurants", value);
+      if (data?.insertedId) {
+        Swal.fire({
+          title: "Successfully Added",
+          icon: "success",
+          confirmButtonText: "Okay!",
+        });
+        event.reset();
+        navigate("/");
+      }
     } catch (error) {
       Swal.fire({
         title: "Error",
