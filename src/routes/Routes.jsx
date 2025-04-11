@@ -31,7 +31,7 @@ export const router = createBrowserRouter([
         element: <FoodDetails></FoodDetails>,
       },
       {
-        path: "/restaurant",
+        path: "/restaurant/:city_name",
         element: <RestaurantList />,
       },
       {

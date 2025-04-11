@@ -8,8 +8,8 @@ const City = () => {
     <SectionContainer>
       <SectionTitle>Find the Restaurant of your City</SectionTitle>
       <div className="grid lg:grid-cols-4 md:grid-cols-2 gird-cols-1 gap-6">
-        {cities?.slice(0, 8).map((city, i) => (
-          <Link key={i} to="/restaurant" className="rounded-md overflow-hidden">
+        {cities?.slice(0, 12).map((city, i) => (
+          <Link key={i} to={`/restaurant/${city?.name}`} className="rounded-md overflow-hidden">
             <div className="restaurantImg relative">
               <img src={city?.image} alt="" />
               <h3 className="absolute top-2 right-2 text-black bg-amber-200 px-4 py-2 rounded-lg font-bold text-lg lg:text-2xl">
