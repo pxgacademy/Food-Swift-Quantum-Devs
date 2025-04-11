@@ -150,7 +150,12 @@ const Food_form = () => {
             type="file"
             className="file-input w-full outline-none focus:outline-none"
           />
-          <Input placeholder="Price" name="price" label="Price (Tk)" type="number" />
+          <Input
+            placeholder="Price"
+            name="price"
+            label="Price (Tk)"
+            type="number"
+          />
           <Textarea
             label="Description"
             placeholder="Description"

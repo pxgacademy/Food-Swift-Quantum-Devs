@@ -140,8 +140,8 @@ const Restaurant_form = () => {
             label="City"
             name="city"
             option={cities?.map((city, i) => (
-              <option key={i} value={city}>
-                {city}
+              <option key={i} value={city?.name}>
+                {city?.name}
               </option>
             ))}
           />
