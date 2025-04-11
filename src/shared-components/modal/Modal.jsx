@@ -8,7 +8,8 @@ const Modal = () => {
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      setShowModal(true);
+      // TODO: make it true
+      setShowModal(false);
     }, 2000); // ২ সেকেন্ড পর মডাল দেখাবে
 
     return () => clearTimeout(timer);
@@ -44,7 +45,8 @@ const Modal = () => {
           🍕 Get 50% Off on Your First Order!
         </h2>
         <p className="text-gray-600 mt-2">
-          Order delicious meals from your favorite restaurants. Limited time offer!
+          Order delicious meals from your favorite restaurants. Limited time
+          offer!
         </p>
 
         {/* CTA Buttons */}

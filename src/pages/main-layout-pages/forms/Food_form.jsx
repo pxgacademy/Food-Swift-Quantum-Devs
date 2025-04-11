@@ -3,21 +3,33 @@ import PageContainer from "../../../components/containers/PageContainer";
 import SectionContainer from "../../../components/containers/SectionContainer";
 import Input from "../../../components/inputs/Input";
 import Select from "../../../components/inputs/Select";
-import { cities } from "../../../utilities/arrays-and-objects/ArraysAndObjects";
+import { food_categories } from "../../../utilities/arrays-and-objects/ArraysAndObjects";
 import SectionTitle from "../../../components/containers/SectionTitle";
 import Swal from "sweetalert2";
 import usePublicLink from "../../../hooks/usePublicLink";
 import usePrivateLink from "../../../hooks/usePrivateLink";
 import { useNavigate } from "react-router-dom";
+import { useQuery } from "@tanstack/react-query";
 import useContextValue from "../../../hooks/useContextValue";
+import Loading from "../../../components/loading/Loading";
+import Textarea from "../../../components/inputs/Textarea";
 
 const IMG_API_LINK = import.meta.env.VITE_IMG_API;
 
-const Restaurant_form = () => {
+const Food_form = () => {
   const publicAPI = usePublicLink();
   const privateAPI = usePrivateLink();
   const navigate = useNavigate();
   const { user } = useContextValue();
+
+  const { data: restaurant_ids, isLoading } = useQuery({
+    queryKey: ["restaurant_ids", user?.email],
+    enabled: !!user?.email,
+    queryFn: async () => {
+      const { data } = await privateAPI.get(`/restaurant-ids/${user?.email}`);
+      return data;
+    },
+  });
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -103,60 +115,47 @@ const Restaurant_form = () => {
     }
   };
 
+  if (isLoading || !user?.email) return <Loading />;
+
   return (
     <PageContainer>
       <SectionContainer className="mt-10">
-        <SectionTitle>Restaurant Form</SectionTitle>
+        <SectionTitle>Foods Form</SectionTitle>
         <form
           onSubmit={handleSubmit}
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 lg:gap-5"
         >
-          <Input
-            placeholder="Restaurant Name"
-            name="name"
-            label="Restaurant Name"
-          />
-          <Input
-            name="logo"
-            label="Select a Logo"
-            type="file"
-            className="file-input w-full outline-none focus:outline-none"
-          />
-          <Input
-            name="banner"
-            label="Select a Banner"
-            type="file"
-            className="file-input w-full outline-none focus:outline-none"
-          />
-          <Input placeholder="Phone Number" name="phone" label="Phone Number" />
-          <Input
-            placeholder="Email Address"
-            defaultValue={user?.email}
-            readOnly
-            name="email"
-            label="Email Address"
-          />
           <Select
-            label="City"
-            name="city"
-            option={cities?.map((city, i) => (
-              <option key={i} value={city}>
-                {city}
+            label="Restaurant Name"
+            name="restaurant_id"
+            option={restaurant_ids?.map((id, i) => (
+              <option key={i} value={id?._id}>
+                {id?.name}
               </option>
             ))}
           />
-          <Input placeholder="State" name="state" label="State" />
-          <Input placeholder="Address" name="address" label="Address" />
-          <Input placeholder="Zip_Code" name="zip_code" label="Zip_Code" />
-          <Input
-            placeholder="Country"
-            name="country"
-            label="Country"
-            defaultValue="Bangladesh"
-            readOnly
+          <Input placeholder="Food Name" name="name" label="Food Name" />
+          <Select
+            label="Food Category"
+            name="category"
+            option={food_categories?.map((category, i) => (
+              <option key={i} value={category}>
+                {category}
+              </option>
+            ))}
           />
-          <Input name="opening_time" label="Opening Time" type="time" />
-          <Input name="closing_time" label="Closing Time" type="time" />
+          <Input
+            name="image"
+            label="Select an Image"
+            type="file"
+            className="file-input w-full outline-none focus:outline-none"
+          />
+          <Input placeholder="Price" name="price" label="Price (Tk)" type="number" />
+          <Textarea
+            label="Description"
+            placeholder="Description"
+            divStyles="md:col-span-2 lg:col-span-3"
+          />
 
           <label className="md:col-span-2 lg:col-span-3 flex items-center justify-center">
             <button
@@ -172,4 +171,4 @@ const Restaurant_form = () => {
   );
 };
 
-export default Restaurant_form;
+export default Food_form;

@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 const Select = ({
   disabled = false,
   name = "",
@@ -5,6 +7,8 @@ const Select = ({
   option,
   label,
   className = "",
+  padding = "",
+  margin = "",
 }) => {
   return (
     <div>
@@ -13,7 +17,7 @@ const Select = ({
         name={name}
         defaultValue={defaultValue}
         disabled={disabled || false}
-        className={`${className} select w-full outline-none focus:outline-none`}
+        className={`${className} ${padding} ${margin} select w-full outline-none focus:outline-none`}
       >
         {option && option}
       </select>
@@ -21,5 +25,15 @@ const Select = ({
   );
 };
 
-export default Select;
+Select.propTypes = {
+  disabled: PropTypes.bool,
+  name: PropTypes.string,
+  defaultValue: PropTypes.string,
+  option: PropTypes.element,
+  label: PropTypes.string,
+  className: PropTypes.string,
+  padding: PropTypes.string,
+  margin: PropTypes.string,
+};
 
+export default Select;
