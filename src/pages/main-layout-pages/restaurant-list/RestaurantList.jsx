@@ -21,7 +21,6 @@ const RestaurantList = () => {
   });
 
   if (isLoading || !city_name) return <Loading />;
-  console.log(restaurants);
 
   return (
     <PageContainer>
@@ -46,7 +45,9 @@ const RestaurantList = () => {
                   <h3 className="text-xl font-bold text-slate-800">
                     {restaurant?.name}
                   </h3>
-                  <p className="text-lg text-slate-600">Pizza</p>
+                  <p className="text-lg text-slate-600">
+                    {`${restaurant?.address}, ${restaurant?.state}, ${restaurant?.city}`}
+                  </p>
                 </div>
                 <div>
                   <p className="flex gap-1 items-center text-slate-700">

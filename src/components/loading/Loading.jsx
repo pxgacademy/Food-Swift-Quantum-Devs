@@ -5,7 +5,7 @@ import Lottie from "lottie-react";
 const Loading = ({
   width = "w-full",
   minWidth = "",
-  maxWidth = "",
+  maxWidth = "max-w-screen-2xl",
   height = "h-full",
   minHeight = "min-h-[650px]",
   maxHeight = "",
@@ -15,7 +15,7 @@ const Loading = ({
 
   return (
     <section
-      className={`${style} max-w-screen-2xl mx-auto flex items-center justify-center bg-gray-50 dark:bg-[#1d3335]`}
+      className={`${style} mx-auto flex items-center justify-center bg-gray-50 dark:bg-[#1d3335]`}
     >
       <Lottie animationData={loaderGif} loop={true} />
     </section>
