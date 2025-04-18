@@ -7,8 +7,8 @@ import RestaurantList from "../pages/main-layout-pages/restaurant-list/Restauran
 import FoodItemList from "../pages/main-layout-pages/food-item-list/foodItemList";
 import FoodDetails from "../pages/main-layout-pages/home/FoodDetails/FoodDetails";
 import Restaurant_form from "../pages/main-layout-pages/forms/restaurant_form";
+import Food_form from "../pages/main-layout-pages/forms/Food_form";
 import LiveMap from "../components/map/Livemap";
-
 
 export const router = createBrowserRouter([
   {
@@ -32,7 +32,7 @@ export const router = createBrowserRouter([
         element: <FoodDetails></FoodDetails>,
       },
       {
-        path: "/restaurant",
+        path: "/restaurant/:city_name",
         element: <RestaurantList />,
       },
       {
@@ -44,6 +44,9 @@ export const router = createBrowserRouter([
         element: <Restaurant_form />,
       },
       {
+        path: "food-form",
+        element: <Food_form />,
+      },
         path: 'live-map',
         element: <LiveMap/>
       }

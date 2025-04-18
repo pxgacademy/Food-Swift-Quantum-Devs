@@ -1,23 +1,22 @@
 import PropTypes from "prop-types";
 
-const Input = ({
-  type = "text",
+const Textarea = ({
   placeholder = "",
   disabled = false,
   readOnly = false,
-  required= true,
+  required = true,
   name = "",
   defaultValue = "",
   label,
-  className = "input w-full outline-none focus:outline-none",
+  divStyles='',
+  className = "textarea w-full max-h-40 outline-none focus:outline-none",
   padding = "",
   margin = "",
 }) => {
   return (
-    <div>
+    <div className={`${divStyles}`} >
       {label && <label className="block mb-2 ml-0.5">{label}</label>}
-      <input
-        type={type}
+      <textarea
         placeholder={placeholder}
         name={name}
         defaultValue={defaultValue}
@@ -30,8 +29,7 @@ const Input = ({
   );
 };
 
-Input.propTypes = {
-  type: PropTypes.string,
+Textarea.propTypes = {
   placeholder: PropTypes.string,
   disabled: PropTypes.bool,
   readOnly: PropTypes.bool,
@@ -39,11 +37,15 @@ Input.propTypes = {
   name: PropTypes.string,
   defaultValue: PropTypes.string,
   label: PropTypes.string,
+  divStyles: PropTypes.string,
   className: PropTypes.string,
   padding: PropTypes.string,
   margin: PropTypes.string,
 };
 
+export default Textarea;
 
 
-export default Input;
+
+
+
