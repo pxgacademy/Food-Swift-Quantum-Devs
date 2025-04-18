@@ -10,6 +10,7 @@ import usePublicLink from "../../../hooks/usePublicLink";
 import usePrivateLink from "../../../hooks/usePrivateLink";
 import { useNavigate } from "react-router-dom";
 import useContextValue from "../../../hooks/useContextValue";
+import { useForm } from "react-hook-form";
 
 const IMG_API_LINK = import.meta.env.VITE_IMG_API;
 
@@ -19,10 +20,22 @@ const Restaurant_form = () => {
   const navigate = useNavigate();
   const { user } = useContextValue();
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
+  // react hook form
+  const {
+    register,
+    handleSubmit,
+    reset,
+    setValue,
+    watch,
+    formState: { errors },
+  } = useForm();
 
-    const form = event.target;
+
+
+  const onSubmit = async (data) => {
+    
+
+
     let logo = form.logo.files[0];
     let banner = form.banner.files[0];
 
@@ -108,8 +121,8 @@ const Restaurant_form = () => {
       <SectionContainer className="mt-10">
         <SectionTitle>Restaurant Form</SectionTitle>
         <form
-          onSubmit={handleSubmit}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 lg:gap-5"
+          onSubmit={handleSubmit(onSubmit)}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 lg:gap-5 border border-gray-300 dark:border-gray-600 p-5 md:p-8 rounded-2xl"
         >
           <Input
             placeholder="Restaurant Name"
