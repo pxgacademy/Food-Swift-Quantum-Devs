@@ -6,6 +6,7 @@ import usePublicLink from "../../../hooks/usePublicLink";
 import useContextValue from "../../../hooks/useContextValue";
 import Swal from "sweetalert2";
 import SocialLogin from "../social-login/SocialLogin";
+import FileNameShorter from "../../../hooks/FileNameShorter.js";
 
 const IMG_API_LINK = import.meta.env.VITE_IMG_API;
 
@@ -30,7 +31,14 @@ const Register = () => {
       const isValidPass = passRegex.test(value);
       console.log(isValidPass);
       if (isValidPass) {
-        setErrMsg({...errMsg, passErr: false});
+        setErrMsg({ ...errMsg, passErr: false });
+      } else {
+        setErrMsg({
+          ...errMsg,
+          isErr: true,
+          passErr:
+            "Password must be 8 characters long with at least 1 uppercase, 1 number, and 1 special character",
+        });
       }
     }
   };
@@ -43,7 +51,11 @@ const Register = () => {
 
   const handleFileChange = (event) => {
     const file = event.target.files[0];
-    setFileName(file ? file.name : "No file chosen");
+
+    if (file) {
+      const fileName = FileNameShorter(file.name);
+      setFileName(fileName);
+    }
   };
 
   const handleRegister = async (event) => {
@@ -59,6 +71,7 @@ const Register = () => {
     if (!isValidPass) {
       return setErrMsg({
         ...errMsg,
+        isErr: true,
         passErr:
           "Password must be 8 characters long with at least 1 uppercase, 1 number, and 1 special character",
       });
