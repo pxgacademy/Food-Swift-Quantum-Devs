@@ -15,6 +15,25 @@ const Register = () => {
   const { createUser, updateUser, setUser } = useContextValue();
   const publicAPI = usePublicLink();
   const navigate = useNavigate();
+  const [errMsg, setErrMsg] = useState({
+    isErr: false,
+    passErr: null,
+    confirmPass: null,
+  });
+
+  // const passRegex = /^(?=.[A-Z])(?=.)̣(?=.*[@#%^&+=!]).{8,}$/;
+  const passRegex =
+    /^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]).{8,}$/;
+
+  const passTester = (value) => {
+    if (errMsg.isErr) {
+      const isValidPass = passRegex.test(value);
+      console.log(isValidPass);
+      if (isValidPass) {
+        setErrMsg({...errMsg, passErr: false});
+      }
+    }
+  };
 
   const togglePasswordVisibility = (event) => {
     event.preventDefault();
@@ -35,6 +54,15 @@ const Register = () => {
     const email = form.email.value;
     const password = form.password.value;
     let image = form.image.files[0];
+
+    const isValidPass = passRegex.test(password);
+    if (!isValidPass) {
+      return setErrMsg({
+        ...errMsg,
+        passErr:
+          "Password must be 8 characters long with at least 1 uppercase, 1 number, and 1 special character",
+      });
+    }
 
     const formData = new FormData();
     formData.append("image", image);
@@ -122,6 +150,7 @@ const Register = () => {
               placeholder="Enter your password"
               name="password"
               required
+              onChange={(e) => passTester(e.target.value)}
               className={`w-full p-2 border border-gray-300 rounded bg-transparent  focus:outline-none focus:ring-2 focus:ring-purple-300`}
             />
             <button
@@ -131,6 +160,11 @@ const Register = () => {
               {showPassword ? <FaEyeSlash /> : <FaEye />}
             </button>
           </div>
+          {errMsg.passErr && (
+            <span className="text-error text-sm mb-2 inline-block">
+              {errMsg.passErr}
+            </span>
+          )}
 
           <div className="relative mb-4 border border-gray-300 rounded-lg cursor-pointer flex items-center justify-between py-1 px-2">
             <input
