@@ -2,25 +2,28 @@ import PropTypes from "prop-types";
 
 const Input = ({
   label = "",
+  id='',
   type = "text",
   placeholder = "",
   disabled = false,
   readOnly = false,
-  accept = '',
+  accept = "",
   className = "",
   padding = "",
   margin = "",
+  width = "w-full",
   inputType = "input",
   clearStyles = false,
   validation,
   errorText,
 }) => {
-  const style = `w-full outline-none focus:outline-none ${errorText && 'border-error'}`;
+  const style = `${width} outline-none focus:outline-none ${errorText && "border-error"}`;
 
   return (
     <div>
       {label && <label className="block mb-2 ml-0.5">{label}</label>}
       <input
+        id={id}
         type={type}
         placeholder={placeholder}
         disabled={disabled || false}
@@ -37,13 +40,15 @@ const Input = ({
 };
 
 Input.propTypes = {
+  label: PropTypes.string,
+  id: PropTypes.string,
   type: PropTypes.string,
   placeholder: PropTypes.string,
   disabled: PropTypes.bool,
   readOnly: PropTypes.bool,
   accept: PropTypes.string,
-  label: PropTypes.string,
   className: PropTypes.string,
+  width: PropTypes.string,
   padding: PropTypes.string,
   margin: PropTypes.string,
   inputType: PropTypes.string,
