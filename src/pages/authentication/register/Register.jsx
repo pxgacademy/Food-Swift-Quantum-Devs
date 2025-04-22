@@ -129,7 +129,6 @@ const Register = () => {
                 ...register("password", {
                   required: "Password is required",
                   pattern: {
-            
                     value:
                       /^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+\-=[\]{};':"\\|,.<>?]).{8,}$/,
                     message:
@@ -181,12 +180,14 @@ const Register = () => {
           </div>
 
           <div>
-            <div className="input w-full focus:outline-none">
+            <div className="flex items-center gap-x-3 bg-gray-200 dark:bg-white text-gray-800 max-w-60 min-h-16 p-2">
               <Input
+                id="regCheck"
                 type="checkbox"
                 inputType="checkbox"
                 width=""
-                id="regCheck"
+                clearStyles={true}
+                className="border-gray-500 text-gray-700 before:text-gray-700 rounded"
                 validation={{
                   ...register("robot", { required: "Agree with this" }),
                 }}

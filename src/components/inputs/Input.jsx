@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 
 const Input = ({
   label = "",
-  id='',
+  id = "",
   type = "text",
   placeholder = "",
   disabled = false,
@@ -17,7 +17,7 @@ const Input = ({
   validation,
   errorText,
 }) => {
-  const style = `${width} outline-none focus:outline-none ${errorText && "border-error"}`;
+  const style = `outline-none focus:outline-none ${errorText && "border-error"}`;
 
   return (
     <div>
@@ -30,7 +30,7 @@ const Input = ({
         readOnly={readOnly}
         accept={accept}
         {...validation}
-        className={`${className} ${padding} ${margin} ${inputType} ${!clearStyles && style} `}
+        className={`${className} ${width} ${padding} ${margin} ${inputType} ${!clearStyles && style} `}
       />
       {errorText && (
         <span className="text-error inline-block mt-1">{errorText}</span>
