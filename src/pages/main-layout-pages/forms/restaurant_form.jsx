@@ -3,13 +3,15 @@ import PageContainer from "../../../components/containers/PageContainer";
 import SectionContainer from "../../../components/containers/SectionContainer";
 import Input from "../../../components/inputs/Input";
 import Select from "../../../components/inputs/Select";
-import { cities } from "../../../utilities/arrays-and-objects/ArraysAndObjects";
 import SectionTitle from "../../../components/containers/SectionTitle";
 import Swal from "sweetalert2";
 import usePublicLink from "../../../hooks/usePublicLink";
 import usePrivateLink from "../../../hooks/usePrivateLink";
 import { useNavigate } from "react-router-dom";
 import useContextValue from "../../../hooks/useContextValue";
+import { useForm } from "react-hook-form";
+import AddressInputs from "./address-inputs/AddressInputs";
+import { restaurantImportanceInfo } from "./importance_info/RestaurantImportanceInfo";
 
 const IMG_API_LINK = import.meta.env.VITE_IMG_API;
 
@@ -19,78 +21,27 @@ const Restaurant_form = () => {
   const navigate = useNavigate();
   const { user } = useContextValue();
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
+  // react hook form
+  const {
+    register,
+    handleSubmit,
+    reset,
+    setValue,
+    watch,
+    formState: { errors },
+  } = useForm();
 
-    const form = event.target;
-    let logo = form.logo.files[0];
-    let banner = form.banner.files[0];
-
-    if (!logo || !banner) return;
-
-    const logoData = new FormData();
-    const bannerData = new FormData();
-    logoData.append("image", logo);
-    bannerData.append("image", banner);
+  const onSubmit = async (data) => {
+    if (data) return;
 
     try {
-      const logoResponse = await publicAPI.post(IMG_API_LINK, logoData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      });
-
-      const bannerResponse = await publicAPI.post(IMG_API_LINK, bannerData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      });
-
-      if (logoResponse?.data?.data?.url && bannerResponse?.data?.data?.url) {
-        logo = logoResponse?.data?.data?.url;
-        banner = bannerResponse?.data?.data?.url;
-      } else
-        return Swal.fire({
-          title: "Error",
-          text: "Failed to upload images",
-          icon: "error",
-          confirmButtonText: "Okay!",
-        });
-
-      const name = form.name.value;
-      const phone = form.phone.value;
-      const email = form.email.value;
-      const city = form.city.value;
-      const state = form.state.value;
-      const address = form.address.value;
-      const zip_code = form.zip_code.value;
-      const country = form.country.value;
-      const opening_time = form.opening_time.value;
-      const closing_time = form.closing_time.value;
-
-      const value = {
-        name,
-        logo,
-        banner,
-        phone,
-        email,
-        city,
-        state,
-        address,
-        zip_code,
-        country,
-        opening_time,
-        closing_time,
-      };
-
-      const { data } = await privateAPI.post("/restaurants", value);
+      const { data } = await privateAPI.post("/restaurants", data);
       if (data?.insertedId) {
         Swal.fire({
           title: "Successfully Added",
           icon: "success",
           confirmButtonText: "Okay!",
         });
-        form.reset();
         navigate("/");
       }
     } catch (error) {
@@ -107,66 +58,171 @@ const Restaurant_form = () => {
     <PageContainer>
       <SectionContainer className="mt-10">
         <SectionTitle>Restaurant Form</SectionTitle>
-        <form
-          onSubmit={handleSubmit}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 lg:gap-5"
-        >
-          <Input
-            placeholder="Restaurant Name"
-            name="name"
-            label="Restaurant Name"
-          />
-          <Input
-            name="logo"
-            label="Select a Logo"
-            type="file"
-            className="file-input w-full outline-none focus:outline-none"
-          />
-          <Input
-            name="banner"
-            label="Select a Banner"
-            type="file"
-            className="file-input w-full outline-none focus:outline-none"
-          />
-          <Input placeholder="Phone Number" name="phone" label="Phone Number" />
-          <Input
-            placeholder="Email Address"
-            defaultValue={user?.email}
-            readOnly
-            name="email"
-            label="Email Address"
-          />
-          <Select
-            label="City"
-            name="city"
-            option={cities?.map((city, i) => (
-              <option key={i} value={city?.name}>
-                {city?.name}
-              </option>
-            ))}
-          />
-          <Input placeholder="State" name="state" label="State" />
-          <Input placeholder="Address" name="address" label="Address" />
-          <Input placeholder="Zip_Code" name="zip_code" label="Zip_Code" />
-          <Input
-            placeholder="Country"
-            name="country"
-            label="Country"
-            defaultValue="Bangladesh"
-            readOnly
-          />
-          <Input name="opening_time" label="Opening Time" type="time" />
-          <Input name="closing_time" label="Closing Time" type="time" />
 
-          <label className="md:col-span-2 lg:col-span-3 flex items-center justify-center">
+        <form
+          onSubmit={handleSubmit(onSubmit)}
+          className="border border-gray-300 dark:border-gray-600 p-5 md:p-8 rounded-2xl"
+        >
+          {/* Restaurant Details */}
+          <h4 className="text-xl font-semibold mb-3">Restaurant Details</h4>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-5">
+            <Input
+              placeholder="Restaurant Name"
+              label="Restaurant Name"
+              validation={{
+                ...register("name", {
+                  required: "Restaurant name is required",
+                }),
+              }}
+              errorText={errors?.name?.message}
+            />
+            <Input
+              placeholder="Username"
+              label="Username"
+              validation={{
+                ...register("username", {
+                  required: "Username is required",
+                  pattern: {
+                    value: /^[a-z0-9_]+$/,
+                    message:
+                      "only lowercase letters, numbers, and underscores allowed",
+                  },
+                  minLength: {
+                    value: 4,
+                    message: "Username must be at least 4 characters",
+                  },
+                }),
+              }}
+              errorText={errors?.username?.message}
+            />
+            <Input
+              label="Select a Logo"
+              type="file"
+              inputType="file-input"
+              accept="image/*"
+              validation={{
+                ...register("logo", {
+                  required: "Logo is required",
+                  validate: {
+                    lessThan1MB: (files) =>
+                      files[0]?.size < 1048576 ||
+                      "File size must be less than 1MB",
+                  },
+                }),
+              }}
+              errorText={errors?.logo?.message}
+            />
+            <Input
+              label="Select a Banner"
+              type="file"
+              inputType="file-input"
+              accept="image/*"
+              validation={{
+                ...register("banner", {
+                  required: "Banner is required",
+                }),
+              }}
+              errorText={errors?.banner?.message}
+            />
+            <Input
+              placeholder="e.g., 01XXXXXXXXX"
+              label="Phone Number"
+              type="tel"
+              validation={{
+                ...register("phone", {
+                  required: "Phone number is required",
+                  pattern: {
+                    value: /^01\d{9}$/,
+                    message: "Phone number must be 11 digits and start with 01",
+                  },
+                  onChange: (e) => {
+                    const value = e.target.value
+                      .replace(/\D/g, "")
+                      .slice(0, 11);
+                    setValue("phone", value);
+                  },
+                }),
+              }}
+              errorText={errors?.phone?.message}
+            />
+            <Input
+              label="Email Address"
+              placeholder="Email Address"
+              type="email"
+              readOnly
+              validation={{
+                ...register("email", {
+                  required: "Email is required",
+                  pattern: {
+                    value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+                    message: "Enter a valid email address",
+                  },
+                }),
+              }}
+              errorText={errors?.email?.message}
+            />
+            <Input
+              label="Opening Time"
+              type="time"
+              validation={{
+                ...register("opening_time", {
+                  required: "Opening time is required",
+                }),
+              }}
+              errorText={errors?.opening_time?.message}
+            />
+            <Input
+              label="Closing Time"
+              type="time"
+              validation={{
+                ...register("closing_time", {
+                  required: "Closing time is required",
+                }),
+              }}
+              errorText={errors?.closing_time?.message}
+            />
+          </div>
+
+          {/* Restaurant Address */}
+          <h4 className="text-xl font-semibold mt-5 mb-3">
+            Restaurant Address
+          </h4>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 lg:gap-5">
+            <AddressInputs register={register} errors={errors} watch={watch} />
+          </div>
+
+          <div className="flex items-center justify-center mt-8">
             <button
               role="button"
               className="btn btn-wide bg-primaryColor/90 hover:bg-primaryColor"
             >
               Submit
             </button>
-          </label>
+          </div>
         </form>
+
+        <div className="mt-8 border border-gray-300 dark:border-gray-600 p-5 md:p-8 rounded-2xl">
+          <h2 className="text-2xl font-bold mb-4 text-center">
+            📝 Why We Ask These Inputs
+          </h2>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+            {restaurantImportanceInfo?.map((input, index) => (
+              <div
+                key={index}
+                className=" bg-gray-100 dark:bg-base-200 border border-gray-300 dark:border-gray-700 p-4 rounded-lg"
+              >
+                <h3 className="text-lg font-semibold">{input.label}</h3>
+                <p className="text-sm mt-1">
+                  <strong>Importance:</strong> {input.importance}
+                </p>
+                <p className="text-sm">
+                  <strong>Why it matters:</strong> {input.reason}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
       </SectionContainer>
     </PageContainer>
   );
