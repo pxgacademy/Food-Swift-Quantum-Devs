@@ -6,64 +6,63 @@ import usePublicLink from "../../../hooks/usePublicLink";
 import useContextValue from "../../../hooks/useContextValue";
 import Swal from "sweetalert2";
 import SocialLogin from "../social-login/SocialLogin";
+import { useForm } from "react-hook-form";
+import Input from "../../../components/inputs/Input.jsx";
 
 const IMG_API_LINK = import.meta.env.VITE_IMG_API;
 
 const Register = () => {
-  const [showPassword, setShowPassword] = useState(false);
-  const [fileName, setFileName] = useState("No file chosen");
+  const [showPassword, setShowPassword] = useState({
+    password: false,
+    confirm: false,
+  });
   const { createUser, updateUser, setUser } = useContextValue();
   const publicAPI = usePublicLink();
   const navigate = useNavigate();
 
-  const togglePasswordVisibility = (event) => {
+  const {
+    register,
+    watch,
+    reset,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
+  const password = watch("password");
+
+  const togglePasswordVisibility = (field) => (event) => {
     event.preventDefault();
     event.stopPropagation();
-    setShowPassword(!showPassword);
+    setShowPassword((prev) => ({ ...prev, [field]: !prev[field] }));
   };
 
-  const handleFileChange = (event) => {
-    const file = event.target.files[0];
-    setFileName(file ? file.name : "No file chosen");
-  };
-
-  const handleRegister = async (event) => {
-    event.preventDefault();
-
-    const form = event.target;
-    const name = form.name.value;
-    const email = form.email.value;
-    const password = form.password.value;
-    let image = form.image.files[0];
-
+  const onSubmit = async (data) => {
+    let image = data.image[0];
     const formData = new FormData();
     formData.append("image", image);
 
     try {
-      const res = await publicAPI.post(IMG_API_LINK, formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      });
-
-      image = res?.data?.data?.display_url;
-
-      if (!image)
+      const res = await publicAPI.post(IMG_API_LINK, formData);
+      if (!res?.data?.data?.display_url) {
         return Swal.fire({
           title: "Error",
           text: "Failed to upload image",
           icon: "error",
           confirmButtonText: "Okay",
         });
+      }
 
-      const { user } = await createUser(email, password);
-      await updateUser({ displayName: name, photoURL: image });
+      data.image = res?.data?.data?.display_url;
+
+      const { user } = await createUser(data?.email, data?.password);
       setUser(user);
+      await updateUser({ displayName: data?.name, photoURL: data?.image });
 
       const { data } = await publicAPI.post("/users", {
-        name,
-        email,
-        image,
+        name: data?.name,
+        email: data?.email,
+        image: data?.image,
+        isRobot: !data?.robot,
         isBlock: false,
       });
 
@@ -76,7 +75,7 @@ const Register = () => {
           position: "center",
           timer: 2000,
         });
-        event.target.reset();
+        reset();
         navigate("/");
       }
     } catch (error) {
@@ -91,70 +90,124 @@ const Register = () => {
 
   return (
     <PageContainer padding="p-5 md:p-8 lg:p-16">
-      <div
-        className={`w-full max-w-md mx-auto p-4 sm:p-6 md:p-8 rounded-lg shadow-lg border border-purple-300`}
-      >
-        <h2 className="text-xl sm:text-2xl font-semibold text-center mb-4">
+      <div className="w-full max-w-md mx-auto p-6 rounded-lg shadow-lg border border-purple-300">
+        <h2 className="text-2xl font-semibold text-center mb-4">
           Food Delivery App
         </h2>
         <p className="text-center mb-4">Register to Continue</p>
 
-        <form onSubmit={handleRegister}>
-          <input
-            type="text"
+        <SocialLogin>Register with Google</SocialLogin>
+        <p className="text-center my-4">Or continue with</p>
+
+        <form onSubmit={handleSubmit(onSubmit)} className="space-y-3">
+          <Input
             placeholder="Enter your name"
-            name="name"
-            required
-            className={`w-full p-2 mb-4 border border-gray-300 rounded bg-transparent  focus:outline-none focus:ring-2 focus:ring-purple-300`}
+            validation={{
+              ...register("name", {
+                required: "Name is required",
+              }),
+            }}
+            errorText={errors?.name?.message}
           />
 
-          <input
+          <Input
             type="email"
             placeholder="Enter your email"
-            name="email"
-            required
-            className={`w-full p-2 mb-4 border border-gray-300 rounded bg-transparent  focus:outline-none focus:ring-2 focus:ring-purple-300`}
+            validation={{
+              ...register("email", {
+                required: "Email is required",
+              }),
+            }}
+            errorText={errors?.email?.message}
           />
 
-          <div className="relative mb-4">
-            <input
-              type={showPassword ? "text" : "password"}
+          <div className="relative">
+            <Input
+              type={showPassword.password ? "text" : "password"}
               placeholder="Enter your password"
-              name="password"
-              required
-              className={`w-full p-2 border border-gray-300 rounded bg-transparent  focus:outline-none focus:ring-2 focus:ring-purple-300`}
+              validation={{
+                ...register("password", {
+                  required: "Password is required",
+                  pattern: {
+                    value:
+                      /^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+\-=[\]{};':"\\|,.<>?]).{8,}$/,
+                    message:
+                      "Password must be 8 characters long with at least 1 uppercase, 1 number, and 1 special character",
+                  },
+                }),
+              }}
+              errorText={errors?.password?.message}
             />
             <button
-              onClick={(event) => togglePasswordVisibility(event)}
-              className={`absolute top-1/2 right-3 transform -translate-y-1/2  hover:text-white`}
+              onClick={togglePasswordVisibility("password")}
+              className="absolute top-3 right-3"
             >
-              {showPassword ? <FaEyeSlash /> : <FaEye />}
+              {showPassword.password ? <FaEyeSlash /> : <FaEye />}
             </button>
           </div>
 
-          <div className="relative mb-4 border border-gray-300 rounded-lg cursor-pointer flex items-center justify-between py-1 px-2">
-            <input
-              type="file"
-              className="absolute inset-0 opacity-0 w-full h-full cursor-pointer"
-              name="image"
-              required
-              accept="image/*"
-              onChange={handleFileChange}
+          <div className="relative">
+            <Input
+              type={showPassword.confirm ? "text" : "password"}
+              placeholder="Confirm password"
+              validation={{
+                ...register("confirm_password", {
+                  required: "Confirm password is required",
+                  validate: (value) =>
+                    value === password || "Password do not match",
+                }),
+              }}
+              errorText={errors?.confirm_password?.message}
             />
-            <span className="py-1 px-2 rounded-lg w-fit bg-base-300">
-              Choose File
-            </span>
-            <span className="text-sm">{fileName || "No file chosen"}</span>
+            <button
+              onClick={togglePasswordVisibility("confirm")}
+              className="absolute top-3 right-3"
+            >
+              {showPassword.confirm ? <FaEyeSlash /> : <FaEye />}
+            </button>
           </div>
 
-          <button className="w-full py-2 bg-gradient-to-r from-primaryColor to-secondaryColor text-white rounded font-medium hover:opacity-90 cursor-pointer ">
+          <div>
+            <Input
+              type="file"
+              inputType="file-input"
+              accept="image/*"
+              validation={{
+                ...register("image", { required: "Image is required" }),
+              }}
+              errorText={errors?.image?.message}
+            />
+          </div>
+
+          <div>
+            <div className="flex items-center gap-x-3 bg-gray-200 dark:bg-white text-gray-800 max-w-60 min-h-16 p-2">
+              <Input
+                id="regCheck"
+                type="checkbox"
+                inputType="checkbox"
+                width=""
+                clearStyles={true}
+                className="border-gray-500 text-gray-700 before:text-gray-700 rounded"
+                validation={{
+                  ...register("robot", { required: "Agree with this" }),
+                }}
+              />
+              <label htmlFor="regCheck">I am not robot</label>
+            </div>
+            {errors?.robot && (
+              <span className="inline-block text-base text-error mt-1">
+                {errors?.robot?.message}
+              </span>
+            )}
+          </div>
+
+          <button
+            type="submit"
+            className="w-full py-2 bg-gradient-to-r from-primaryColor to-secondaryColor text-white rounded font-medium hover:opacity-90"
+          >
             Register
           </button>
         </form>
-
-        <p className="text-center my-4">Or continue with</p>
-
-        <SocialLogin>Register with Google</SocialLogin>
 
         <p className="text-center mt-4">
           Already have an account?

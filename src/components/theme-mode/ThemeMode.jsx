@@ -16,7 +16,6 @@ const ThemeMode = ({ className = "" }) => {
 
   const setThemeMode = () => {
     const theme = localStorage.getItem("theme");
-    console.log(theme);
     if (theme) {
       setIsDark(theme === "dark");
       document.documentElement.setAttribute("data-theme", theme);

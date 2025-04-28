@@ -29,7 +29,7 @@ const SocialLogin = ({ children }) => {
   return (
     <button
       onClick={handleGoogleLogin}
-      className="w-full flex items-center justify-center py-2 px-4 bg-white text-gray-800 border border-gray-300 rounded-lg hover:bg-gray-100 transition-all cursor-pointer"
+      className="btn w-full shadow-xs shadow-primaryColor"
     >
       <FaGoogle className="mr-2 text-xl" />
       <span className="font-semibold">{children}</span>
