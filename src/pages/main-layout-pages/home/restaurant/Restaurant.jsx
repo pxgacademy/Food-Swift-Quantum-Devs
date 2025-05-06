@@ -35,6 +35,34 @@ const restaurants = [
     items: ["Chicken", "Roast"],
     rating: 4.5,
   },
+  {
+    id: 5,
+    name: "Burger Corner",
+    image: restaurantTwo,
+    items: ["Burger"],
+    rating: 4.5,
+  },
+  {
+    id: 6,
+    name: "Haji Biriyani",
+    image: restaurantThree,
+    items: ["Biriyani"],
+    rating: 4.5,
+  },
+  {
+    id: 7,
+    name: "Pizza House",
+    image: restaurantOne,
+    items: ["Pizza"],
+    rating: 4.5,
+  },
+  {
+    id: 8,
+    name: "Burger Corner",
+    image: restaurantTwo,
+    items: ["Burger"],
+    rating: 4.5,
+  },
 ];
 
 const Restaurant = () => {
