@@ -5,6 +5,7 @@ import Footer from "../../shared-components/footer/Footer";
 import Modal from "../../shared-components/modal/Modal";
 import { useThemeStore } from "../../hooks/useThemeStore";
 
+
 const MainLayout = () => {
   const { theme } = useThemeStore();
 
@@ -13,7 +14,7 @@ const MainLayout = () => {
       <Modal />
       <Header />
       <Outlet />
-      <Footer></Footer>
+      <Footer />
     </section>
   );
 };

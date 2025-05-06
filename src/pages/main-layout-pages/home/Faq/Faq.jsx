@@ -1,6 +1,4 @@
 import { useState } from "react";
-import { BsArrowRight, BsArrowRightShort } from "react-icons/bs";
-import { FiMinus, FiPlus } from "react-icons/fi";
 import SectionContainer from "../../../../components/containers/SectionContainer";
 import SectionTitle from "../../../../components/containers/SectionTitle";
 const faqs = [
@@ -66,7 +64,7 @@ const Faq = () => {
     <SectionContainer>
       <SectionTitle>Frequently Asked Questions</SectionTitle>
       {/* tabs */}
-      <div className="flex gap-2 justify-center mb-5">
+      <div className="flex gap-2 justify-center mb-8">
         <button
           className={`btn ${
             activeTab === "customer" ? "btn-primary" : "btn-ghost"
@@ -84,6 +82,8 @@ const Faq = () => {
           I&apos;m a Foodman
         </button>
       </div>
+     
+     
       {/* FAQ section */}
       <div className="space-y-3">
         {activeTab === "customer" ? (

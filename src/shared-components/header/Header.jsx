@@ -17,15 +17,15 @@ const Header = () => {
         {/* left side nav */}
         <Link to="/">
           <div className="flex items-center gap-x-3" role="button">
-            <img alt="icon" src={deliveryIcon} className="w-10 h-10" />
-            <h3 className="text-2xl md:text-2xl bg-base-100 px-5 py-1 rounded font-Lobster text-primary">
+            <img alt="icon" src={deliveryIcon} className="size-8 sm:size-10" />
+            <h3 className="text-lg sm:text-2xl md:text-2xl bg-base-100 px-5 py-1 rounded font-Lobster text-primary">
               Loizar
             </h3>
           </div>
         </Link>
 
         {/* Right side nav */}
-        <div className="flex items-center gap-x-5">
+        <div className="flex items-center sm:gap-x-5">
           {!user && (
             <>
               <Link to="/login">
@@ -37,6 +37,9 @@ const Header = () => {
             </>
           )}
 
+          <button className="hidden sm:flex btn">
+            <span className="hidden md:inline">Select</span> Your Location
+          </button>
           <DefineTheme />
 
           {user && (
@@ -48,7 +51,7 @@ const Header = () => {
                   role="button"
                   className="btn btn-ghost btn-circle avatar text-center"
                 >
-                  <div className="w-10 rounded-full">
+                  <div className="size-7 sm:size-10 rounded-full">
                     {user ? (
                       <img alt="" src={user?.photoURL} />
                     ) : (

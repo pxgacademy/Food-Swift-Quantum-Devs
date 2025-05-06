@@ -16,7 +16,7 @@ const DefineTheme = () => {
       <select
         onChange={(e) => setTheme(e.target.value)}
         defaultValue={theme}
-        className="select w-auto focus:outline-none "
+        className="select select-sm sm:select-md w-auto focus:outline-none "
       >
         {THEMES?.map((t) => (
           <option key={t} value={t}>

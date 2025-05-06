@@ -6,8 +6,8 @@ const Banner = () => {
   return (
     <>
       <SectionContainer>
-        <div className="mt-10 flex lg:gap-24 gap-12 justify-between items-center">
-          <div className="lg:w-1/2 w-full">
+        <div className="mt-10 flex flex-col-reverse md:flex-row lg:gap-24 gap-12 justify-between items-center">
+          <div className="lg:w-1/2 w-full mt-10 md:mt-0">
             <h2 className="lg:text-6xl md:text-4xl text-3xl">
               Best <span className="font-Lobster text-primary">Loizar</span>{" "}
               Service <br /> in your area
@@ -21,7 +21,9 @@ const Banner = () => {
 
             <DiscountInput className="mt-8" />
           </div>
-          <div className="md:w-1/2 w-full flex justify-end">
+
+          {/* banner image  */}
+          <div className="w-full sm:w-[80%] md:w-[90%] lg:w-1/2 flex justify-end">
             <img src={bannerImg} alt="" className="w-full md:w-[70%]" />
           </div>
         </div>
