@@ -6,7 +6,7 @@ import Btn_becomeFoodman from "../../../../components/buttons/Btn_becomeFoodman"
 
 const PartnerBiker = () => {
   return (
-    <SectionContainer className="md:flex justify-between gap-5">
+    <SectionContainer className="md:flex justify-between gap-5 border border-primary/40 py-10 rounded-2xl">
       <div className="space-y-5">
         <h3 className="text-2xl lg:text-3xl  font-bold mb-8">
           Have a Restaurant? Become a Partner
@@ -34,7 +34,7 @@ const PartnerBiker = () => {
         </div>
       </div>
       <div className="p-4">
-        <div className="border border-r-2 border-gray-300 min-h-56 hidden md:block"></div>
+        <div className="border border-r-2 border-primary min-h-56 hidden md:block"></div>
       </div>
       <div className="space-y-5">
         <h3 className="text-2xl lg:text-3xl  font-bold mb-8">

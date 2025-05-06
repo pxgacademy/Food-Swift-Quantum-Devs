@@ -2,6 +2,7 @@ import { useState } from "react";
 import { BsArrowRight, BsArrowRightShort } from "react-icons/bs";
 import { FiMinus, FiPlus } from "react-icons/fi";
 import SectionContainer from "../../../../components/containers/SectionContainer";
+import SectionTitle from "../../../../components/containers/SectionTitle";
 const faqs = [
   {
     question: "I got the wrong food. What should I do?",
@@ -64,9 +65,7 @@ const Faq = () => {
 
   return (
     <SectionContainer>
-      <h2 className="text-center lg:text-5xl md:text-3xl text-2xl mb-10">
-        Frequently Asked Questions
-      </h2>
+      <SectionTitle>Frequently Asked Questions</SectionTitle>
       {/* tabs */}
       <div className="flex gap-2 justify-center mb-5">
         <button
@@ -89,50 +88,37 @@ const Faq = () => {
       {/* FAQ section */}
       <div className="space-y-3">
         {activeTab === "customer" ? (
-          <div>
+          <div className="space-y-2">
             {faqs.map((faq, index) => (
-              <div key={index} className="py-2">
-                <button
-                  className="flex justify-items-start items-center w-full text-left text-xl font-medium gap-3 dark:text-white"
-                  onClick={() => setOpenFAQ(openFAQ === index ? null : index)}
-                >
-                  {openFAQ === index ? (
-                    <FiMinus className="text-red-500" />
-                  ) : (
-                    <FiPlus className="text-red-500" />
-                  )}
+              <div
+                key={index}
+                tabIndex={0}
+                className="collapse collapse-arrow bg-base-100 border-base-300/60 border"
+              >
+                <div className="collapse-title font-semibold">
                   {faq.question}
-                </button>
-                {openFAQ === index && (
-                  <p className="mt-2 ml-8 text-lg">{faq.ans}</p>
-                )}
+                </div>
+                <div className="collapse-content text-sm">{faq.ans}</div>
               </div>
             ))}
           </div>
         ) : (
-          <div>
+          <div className="space-y-3">
             {foodMan.map((faq, index) => (
-              <div key={index} className="py-2">
-                <button
-                  className="flex justify-items-start items-center w-full text-left text-xl font-medium gap-3 dark:text-white"
-                  onClick={() => setOpenFAQ(openFAQ === index ? null : index)}
-                >
-                  {openFAQ === index ? (
-                    <FiMinus className="text-red-500" />
-                  ) : (
-                    <FiPlus className="text-red-500" />
-                  )}
+              <div
+                key={index}
+                tabIndex={0}
+                className="collapse collapse-arrow bg-base-100 border-base-300/60 border"
+              >
+                <div className="collapse-title font-semibold">
                   {faq.question}
-                </button>
-                {openFAQ === index && (
-                  <p className="mt-2 ml-8 text-lg ">{faq.ans}</p>
-                )}
+                </div>
+                <div className="collapse-content text-sm">{faq.ans}</div>
               </div>
             ))}
           </div>
         )}
       </div>
-      
     </SectionContainer>
   );
 };

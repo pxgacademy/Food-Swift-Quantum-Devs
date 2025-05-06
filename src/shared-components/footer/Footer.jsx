@@ -22,8 +22,8 @@ const Footer = () => {
           <div className="flex flex-col space-y-1">
             <a className="link link-hover">About us</a>
             <a className="link link-hover">Contact</a>
-            <a className="link link-hover">Jobs</a>
-            <a className="link link-hover">Press kit</a>
+            <a className="link link-hover">Career</a>
+            <a className="link link-hover">Partner</a>
           </div>
         </div>
 
