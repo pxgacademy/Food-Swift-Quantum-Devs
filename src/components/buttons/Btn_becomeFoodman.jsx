@@ -5,11 +5,9 @@ import { Link } from "react-router-dom";
 const Btn_becomeFoodman = () => {
   return (
     <Link>
-      <button className="btn btn-lg btn-primary">
-        Become a Foodman
-        <span>
-          <FaLongArrowAltRight />
-        </span>
+      <button className="btn btn-lg btn-secondary">
+        <span>Become a Foodman</span>
+        <FaLongArrowAltRight />
       </button>
     </Link>
   );

@@ -9,22 +9,22 @@ const PartnerBiker = () => {
     <SectionContainer className="md:flex justify-between gap-5">
       <div className="space-y-5">
         <h3 className="text-2xl lg:text-3xl  font-bold mb-8">
-          Got a Restaurant? Become a Partner
+          Have a Restaurant? Become a Partner
         </h3>
         <p className="text-lg md:text-xl flex items-center">
-          <span className="text-red-500 border-none">
+          <span className="text-primary border-none">
             <RxDotFilled />
           </span>
           Get your food featured
         </p>
         <p className="text-lg md:text-xl flex items-center">
-          <span className="text-red-500 border-none ">
+          <span className="text-primary border-none ">
             <RxDotFilled />
           </span>
           Enjoy an exposure to a huge customer base
         </p>
         <p className="text-lg md:text-xl flex items-center">
-          <span className="text-red-500 border-none">
+          <span className="text-primary border-none">
             <RxDotFilled />
           </span>
           Increase your sales through collaborative campaigns
@@ -41,19 +41,19 @@ const PartnerBiker = () => {
           Got a Bike or a Cycle? Earn with us
         </h3>
         <p className="text-lg md:text-xl flex items-center">
-          <span className="text-red-500 border-none">
+          <span className="text-primary border-none">
             <RxDotFilled />
           </span>
           Earn extra with daily quests and special offers
         </p>
         <p className="text-lg md:text-xl flex items-center">
-          <span className="text-red-500 border-none">
+          <span className="text-primary border-none">
             <RxDotFilled />
           </span>
           Enjoy an exposure to a huge customer base
         </p>
         <p className="text-lg md:text-xl flex items-center">
-          <span className="text-red-500 border-none">
+          <span className="text-primary border-none">
             <RxDotFilled />
           </span>
           Always get your payment right on time!
