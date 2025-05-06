@@ -61,7 +61,6 @@ const foodMan = [
 
 const Faq = () => {
   const [activeTab, setActiveTab] = useState("customer");
-  const [openFAQ, setOpenFAQ] = useState(null);
 
   return (
     <SectionContainer>
@@ -93,7 +92,7 @@ const Faq = () => {
               <div
                 key={index}
                 tabIndex={0}
-                className="collapse collapse-arrow bg-base-100 border-base-300/60 border"
+                className="collapse collapse-arrow bg-base-100 border-primary/25 border"
               >
                 <div className="collapse-title font-semibold">
                   {faq.question}
@@ -108,7 +107,7 @@ const Faq = () => {
               <div
                 key={index}
                 tabIndex={0}
-                className="collapse collapse-arrow bg-base-100 border-base-300/60 border"
+                className="collapse collapse-arrow bg-base-100 border-primary/25 border"
               >
                 <div className="collapse-title font-semibold">
                   {faq.question}
