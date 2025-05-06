@@ -89,16 +89,16 @@ const Login = () => {
             placeholder="Enter your email"
             name="email"
             required
-            className={`w-full p-2 mb-4 border border-gray-300 rounded bg-transparent focus:outline-none focus:ring-2 focus:ring-purple-300`}
+            className={`w-full input focus:outline-none`}
           />
 
-          <div className="relative mb-4">
+          <div className="relative my-4">
             <input
               type={showPassword ? "text" : "password"}
               placeholder="Enter your password"
               name="password"
               required
-              className={`w-full p-2 border border-gray-300 rounded bg-transparent  focus:outline-none focus:ring-2 focus:ring-purple-300`}
+              className={`w-full input focus:outline-none`}
             />
             <button
               onClick={togglePasswordVisibility}

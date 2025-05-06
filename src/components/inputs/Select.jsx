@@ -1,39 +1,41 @@
 import PropTypes from "prop-types";
 
 const Select = ({
-  disabled = false,
-  name = "",
-  defaultValue = "",
+  readOnly = false,
   option,
   label,
   className = "",
   padding = "",
   margin = "",
+  validation,
+  errorText,
 }) => {
   return (
     <div>
       {label && <label className="block mb-2 ml-0.5">{label}</label>}
       <select
-        name={name}
-        defaultValue={defaultValue}
-        disabled={disabled || false}
+        readOnly={readOnly}
+        {...validation}
         className={`${className} ${padding} ${margin} select w-full outline-none focus:outline-none`}
       >
         {option && option}
       </select>
+      {errorText && (
+        <span className="text-error inline-block mt-1">{errorText}</span>
+      )}
     </div>
   );
 };
 
 Select.propTypes = {
-  disabled: PropTypes.bool,
-  name: PropTypes.string,
-  defaultValue: PropTypes.string,
+  readOnly: PropTypes.bool,
   option: PropTypes.element,
   label: PropTypes.string,
   className: PropTypes.string,
   padding: PropTypes.string,
   margin: PropTypes.string,
+  validation: PropTypes.object.isRequired,
+  errorText: PropTypes.string,
 };
 
 export default Select;

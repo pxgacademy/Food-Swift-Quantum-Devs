@@ -10,7 +10,7 @@ const foods = [
     name: "Bacon Cheeseburger",
     price: "9.9",
     image: "https://i.ibb.co.com/bHrhrHP/Pan-Fried-Asparagus.jpg",
-    rating: 4,
+    rating: 5,
   },
   {
     id: 2,
@@ -25,7 +25,7 @@ const foods = [
     price: "7.9",
     image:
       "https://i.ibb.co.com/Hg5D0L4/Vegan-Gluten-Free-Creamy-Spinach-Pasta.jpg",
-    rating: 4,
+    rating: 3,
   },
   {
     id: 4,
@@ -46,9 +46,9 @@ const PopularCard = () => {
           <div
             key={food.id}
             whileHover={{ scale: 1.05 }}
-            className="relative flex flex-col items-center p-4 border border-gray-300 dark:border-gray-700 rounded-xl bg-base-200 shadow-lg"
+            className="relative flex flex-col items-center p-4 pb-6 border border-primary/25  rounded-xl bg-base-200/80 shadow-lg"
           >
-            <button className="absolute top-3 right-3 text-red-500">
+            <button className="absolute top-2 right-2 btn btn-circle bg-black/80 border-none cursor-auto text-red-500 ">
               <FaHeart />
             </button>
             <img
@@ -62,19 +62,20 @@ const PopularCard = () => {
                 <span
                   key={index}
                   className={
-                    index < food.rating ? "text-yellow-500" : "text-gray-400"
+                    index < food.rating ? "text-primary" : "text-gray-400"
                   }
                 >
                   {index < food.rating ? <FaStar /> : <FaRegStar />}
                 </span>
               ))}
             </div>
-            <p className="text-xl font-bold">${food.price}</p>
+            <p className="text-xl font-bold mb-3">${food.price}</p>
             <Link
               to={"/foodDetails"}
-              className="btn bg-primary mt-4 flex items-center gap-2"
             >
-              <FaShoppingCart /> Order Now
+              <button className="btn btn-primary">
+              <FaShoppingCart /> <span>Order Now</span>
+              </button>
             </Link>
           </div>
         ))}

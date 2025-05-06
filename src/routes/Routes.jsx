@@ -47,6 +47,7 @@ export const router = createBrowserRouter([
         path: "food-form",
         element: <Food_form />,
       },
+      {
         path: 'live-map',
         element: <LiveMap/>
       }

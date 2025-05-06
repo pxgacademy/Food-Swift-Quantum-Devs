@@ -16,9 +16,9 @@ const Subscribe = () => {
             <input
               type="text"
               placeholder="Enter email address"
-              className="text-lg text-slate-500 shadow-sm shadow-slate-300 rounded-md px-3 py-3 mr-6"
+              className="input input-lg"
             />
-            <button className="text-lg px-6 py-3 bg-[#F29F05] text-white rounded-lg md:mt-0 mt-3">
+            <button type="button" className="btn btn-lg btn-primary ml-3">
               SUBSCRIBE
             </button>
           </form>
