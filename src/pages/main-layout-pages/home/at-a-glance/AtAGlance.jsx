@@ -1,24 +1,38 @@
 import SectionContainer from "../../../../components/containers/SectionContainer";
 import SectionTitle from "../../../../components/containers/SectionTitle";
 
+const glances = [
+  {
+    label: "Satisfied Customer",
+    number: 53756,
+  },
+  {
+    label: "Best Restaurants",
+    number: 1242,
+  },
+  {
+    label: "Food Delivered",
+    number: 368642,
+  },
+];
+
 const AtAGlance = () => {
   return (
     <SectionContainer>
       <SectionTitle>At a Glance</SectionTitle>
-      
+
       <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-6">
-        <div className=" shadow-sm shadow-slate-300 p-6 text-center rounded-2xl">
-          <h3 className="text-[#F29F05]  text-5xl font-bold">976 +</h3>
-          <p className="lg:text-3xl text-xl pt-3">Satisfied Customer</p>
-        </div>
-        <div className=" shadow-sm shadow-slate-300 p-6 text-center rounded-2xl">
-          <h3 className="text-[#F29F05]  text-5xl font-bold">20 +</h3>
-          <p className="lg:text-3xl text-xl pt-3">Best Restaurants</p>
-        </div>
-        <div className=" shadow-sm shadow-slate-300 p-6 text-center rounded-2xl">
-          <h3 className="text-[#F29F05]  text-5xl font-bold">5k +</h3>
-          <p className="lg:text-3xl text-xl pt-3">Food Delivered</p>
-        </div>
+        {glances?.map((glance, i) => (
+          <div
+            key={i}
+            className=" shadow-sm shadow-primary bg-base-200/60 p-6 text-center rounded-2xl"
+          >
+            <h3 className="text-primary text-5xl font-bold">
+              {glance.number} +
+            </h3>
+            <p className="lg:text-3xl text-xl pt-3">{glance.label}</p>
+          </div>
+        ))}
       </div>
     </SectionContainer>
   );
