@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const Btn_becomeFoodman = () => {
   return (
     <Link>
-      <button className="btn text-lg text-white md:text-xl bg-primaryColor hover:bg-[#F29F05] mt-8">
+      <button className="btn btn-lg btn-primary">
         Become a Foodman
         <span>
           <FaLongArrowAltRight />
