@@ -1,16 +1,16 @@
-# **Project Proposal: Food Swift**
+# **Project Proposal: Loizar**
 
 ## **1. Project Type**
 
-Food Swift is a **web and mobile-based food delivery application** that connects customers with restaurants and delivery personnel.
+Loizar is a **web and mobile-based food delivery application** that connects customers with restaurants and delivery personnel.
 
 ## **2. Project Title**
 
-**Food Swift – Fast, Easy, and Reliable Food Delivery**
+**Loizar – Fast, Easy, and Reliable Food Delivery**
 
 ## **3. Project Description**
 
-Food Swift is a modern food delivery platform where users can browse menus, place orders, and track deliveries in real-time. Restaurants can manage their shops and menus, while registered delivery personnel handle deliveries efficiently. The app ensures a smooth ordering experience with secure payments, live chat, and real-time order tracking.
+Loizar is a modern food delivery platform where users can browse menus, place orders, and track deliveries in real-time. Restaurants can manage their shops and menus, while registered delivery personnel handle deliveries efficiently. The app ensures a smooth ordering experience with secure payments, live chat, and real-time order tracking.
 
 ## **4. Key Features**
 
@@ -56,7 +56,7 @@ Users can order from different restaurants, each having its own menu and profile
 
 ## **5. Sector of Use**
 
-Food Swift will benefit the **food and restaurant industry**, helping:
+Loizar will benefit the **food and restaurant industry**, helping:
 
 - **Customers** get food delivered fast and conveniently.
 - **Restaurants** expand their reach and increase sales.
@@ -71,4 +71,4 @@ Food Swift will benefit the **food and restaurant industry**, helping:
 - **Faster Communication:** Enables live chat between users and restaurants.
 - **Efficient Delivery Process:** Ensures quick response times for order acceptance and delivery.
 
-Food Swift will use **Socket.io** to make the ordering and delivery process smooth and instant, improving the overall user experience.
+Loizar will use **Socket.io** to make the ordering and delivery process smooth and instant, improving the overall user experience.
