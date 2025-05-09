@@ -90,7 +90,7 @@ const Register = () => {
 
   return (
     <PageContainer padding="p-5 md:p-8 lg:p-16">
-      <div className="w-full max-w-md mx-auto p-6 rounded-lg shadow-lg border border-purple-300">
+      <div className="w-full max-w-md mx-auto p-6 rounded-lg shadow-lg border border-primary/60">
         <h2 className="text-2xl font-semibold text-center mb-4">
           Food Delivery App
         </h2>
@@ -203,7 +203,7 @@ const Register = () => {
 
           <button
             type="submit"
-            className="w-full py-2 bg-gradient-to-r from-primaryColor to-secondaryColor text-white rounded font-medium hover:opacity-90"
+            className="w-full btn btn-primary"
           >
             Register
           </button>

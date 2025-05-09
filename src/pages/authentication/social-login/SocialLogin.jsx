@@ -27,10 +27,7 @@ const SocialLogin = ({ children }) => {
   };
 
   return (
-    <button
-      onClick={handleGoogleLogin}
-      className="btn w-full shadow-xs shadow-primaryColor"
-    >
+    <button onClick={handleGoogleLogin} className="btn w-full btn-secondary">
       <FaGoogle className="mr-2 text-xl" />
       <span className="font-semibold">{children}</span>
     </button>

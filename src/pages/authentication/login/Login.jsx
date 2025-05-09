@@ -71,14 +71,14 @@ const Login = () => {
   return (
     <PageContainer padding="p-5 md:p-8 lg:p-16">
       <div
-        className={`w-full max-w-md mx-auto p-4 sm:p-6 md:p-8 rounded-lg shadow-lg border border-purple-300`}
+        className={`w-full max-w-md mx-auto p-4 sm:p-6 md:p-8 rounded-lg shadow-lg border border-primary/60`}
       >
         <h2 className="text-xl sm:text-2xl font-semibold text-center mb-4">
           Food Delivery App
         </h2>
         <p className="text-center mb-4">Login to Continue</p>
-        <hr className="w-full border-t border-gray-300 my-4" />
-        <button className="w-full py-2 bg-gray-300 text-gray-800 rounded mb-4 font-medium cursor-pointer ">
+        <hr className="w-full border-t my-4" />
+        <button className="w-full btn">
           Default Credentials
         </button>
 
@@ -89,7 +89,7 @@ const Login = () => {
             placeholder="Enter your email"
             name="email"
             required
-            className={`w-full input focus:outline-none`}
+            className={`w-full input focus:outline-none mt-3`}
           />
 
           <div className="relative my-4">
@@ -120,7 +120,7 @@ const Login = () => {
 
           <button
             disabled={isBlock || isLoading}
-            className="w-full min-h-10 flex items-center justify-center py-2 bg-gradient-to-r from-primaryColor to-secondaryColor text-white rounded font-medium hover:opacity-90 cursor-pointer text-center disabled:cursor-not-allowed"
+            className="w-full btn btn-primary"
           >
             {isLoading ? (
               <span
