@@ -3,7 +3,7 @@ import { User } from "lucide-react";
 import deliveryIcon from "/food-delivery.png";
 import DefineTheme from "../define-theme/DefineTheme";
 
-export default function Header() {
+const Header = () => {
   // TODO:
   const user: { email: string; photoURL?: string } = { email: "" };
 
@@ -71,7 +71,7 @@ export default function Header() {
                 </li>
               )}
               <li>
-                <DefineTheme/>
+                <DefineTheme />
               </li>
               <li>
                 <a>Settings</a>
@@ -83,4 +83,6 @@ export default function Header() {
       </div>
     </nav>
   );
-}
+};
+
+export default Header;

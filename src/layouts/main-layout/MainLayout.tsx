@@ -7,7 +7,7 @@ const MainLayout: React.FC = () => {
   const { theme } = useThemeStore();
 
   return (
-    <section data-theme={theme}>
+    <section data-theme={theme} className="min-h-screen">
       <Header />
       <Outlet />
     </section>
