@@ -1,15 +1,17 @@
-
+import React from "react";
 import { Outlet } from "react-router-dom";
 import Header from "../../components/header/Header";
+import { useThemeStore } from "../../hooks/useThemeStore";
 
+const MainLayout: React.FC = () => {
+  const { theme } = useThemeStore();
 
-
-export default function MainLayout() {
-  
   return (
-    <section data-theme='coffee'>
-      <Header/>
+    <section data-theme={theme}>
+      <Header />
       <Outlet />
     </section>
   );
-}
+};
+
+export default MainLayout;

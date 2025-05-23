@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { User } from "lucide-react";
 import deliveryIcon from "/food-delivery.png";
+import DefineTheme from "../define-theme/DefineTheme";
 
 export default function Header() {
   // TODO:
@@ -69,6 +70,9 @@ export default function Header() {
                   </a>
                 </li>
               )}
+              <li>
+                <DefineTheme/>
+              </li>
               <li>
                 <a>Settings</a>
               </li>
