@@ -6,9 +6,15 @@ export default function Header() {
   // TODO:
   const user: { email: string; photoURL?: string } = { email: "" };
 
+  const location_button = (
+    <button className="flex btn">
+      <span className="hidden md:inline">Select</span> Your Location
+    </button>
+  );
+
   return (
     <nav className="border-b border-primary/30 py-3">
-      <div className="container mx-auto flex justify-between">
+      <div className="container mx-auto px-3 sm:px-5 flex justify-between">
         {/* left side nav */}
         <Link to="/">
           <div className="flex items-center">
@@ -20,9 +26,20 @@ export default function Header() {
         </Link>
 
         <div className="flex items-center gap-2">
-          <button className="hidden sm:flex btn">
-            <span className="hidden md:inline">Select</span> Your Location
-          </button>
+          <div className={`${!user && "hidden"} sm:block`}>
+            {location_button}
+          </div>
+
+          {!user && (
+            <>
+              <Link to="/login">
+                <button className="btn btn-neutral">Login</button>
+              </Link>
+              <Link to="/register">
+                <button className="btn btn-outline">Register</button>
+              </Link>
+            </>
+          )}
 
           <div className="dropdown dropdown-end">
             <div
