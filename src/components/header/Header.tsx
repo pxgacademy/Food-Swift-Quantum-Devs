@@ -15,7 +15,7 @@ const Header: React.FC = () => {
   const { user } = useAuthStore() as { user: IUser | null };
 
   const locationButton = (
-    <button className="flex btn" aria-label="Select your location">
+    <button className="cursor-pointer" aria-label="Select your location">
       <span className="hidden md:inline">Select</span> Your Location
     </button>
   );
@@ -40,7 +40,7 @@ const Header: React.FC = () => {
         {/* Right side: Navigation buttons and user menu */}
         <div className="flex items-center gap-4">
           {/* Location button visible only if user logged in */}
-          <div className="hidden sm:block">{locationButton}</div>
+          <div className="hidden sm:flex btn">{locationButton}</div>
 
           {/* Authentication buttons (Login/Register) if no user */}
           {!user && (
@@ -101,6 +101,9 @@ const Header: React.FC = () => {
                   </li>
                 </>
               )}
+              <li role="menuitem" className="sm:hidden">
+                {locationButton}
+              </li>
               <li role="menuitem">
                 <DefineTheme />
               </li>
