@@ -52,7 +52,7 @@ const Register: FC = () => {
   return (
     <PageContainer>
       <SectionContainer margin="my-16" className="flex items-center gap-14">
-        <div className="flex-1 max-w-lg p-20 border-[2px] rounded-full">
+        <div className="lg:flex-1 w-full max-w-lg mx-auto lg:mx-0 p-10 sm:p-20 border-[2px] rounded-4xl sm:rounded-full">
           <h2 className="text-xl text-center mb-3">Registration Form</h2>
           <form
             onSubmit={handleSubmit(onSubmit)}
@@ -188,7 +188,7 @@ const Register: FC = () => {
           </form>
         </div>
 
-        <div className="flex-1 rounded-2xl">
+        <div className="hidden lg:block lg:flex-1 rounded-2xl">
           <img src={bannerImage} alt="Banner Image"  className="rounded-xl"/>
         </div>
       </SectionContainer>
