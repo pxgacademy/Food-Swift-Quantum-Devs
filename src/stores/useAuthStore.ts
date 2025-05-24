@@ -29,21 +29,23 @@ interface LoginData {
 }
 
 interface SignupData extends LoginData {
-  fullName?: string;
+  firstName?: string;
+  lastName?: string;
   name?: string;
   image?: string;
-  robot?: boolean;
+  isHuman?: boolean;
 }
 
 interface UpdateUserData {
-  fullName?: string;
+  firstName?: string;
+  lastName?: string;
   image?: string;
 }
 
 interface AuthState {
   user: User | null;
   authLoading: boolean;
-  signup: (data: SignupData) => Promise<AuthResponse | void>;
+  signup: (data: SignupData) => Promise<AuthResponse>;
   login: (data: LoginData) => Promise<AuthResponse>;
   logout: () => Promise<AuthResponse>;
   googleSignin: () => Promise<AuthResponse>;
@@ -67,24 +69,32 @@ export const useAuthStore = create<AuthState>((set) => ({
       set({ user: firebaseUser });
 
       await updateProfile(auth.currentUser!, {
-        displayName: data.fullName,
-        photoURL: data.image,
+        displayName: `${data.firstName} ${data.lastName}`,
       });
 
       const { data: userData } = await publicAxios.post("auth/users", {
-        name: data.name,
+        firstName: data.firstName,
+        lastName: data.lastName,
         email: data.email,
-        image: data.image,
-        isRobot: !data.robot,
+        isHuman: !data.isHuman,
         isBlock: false,
       });
 
-      if (userData?.insertedId) return { message: "success", isSuccess: true };
+      if (userData?.insertedId)
+        return { message: "User successfully created", isSuccess: true };
+      else
+        return {
+          message: "An error occurred while creating user",
+          isSuccess: false,
+        };
       // eslint-disable-next-line
     } catch (error: any) {
       console.error("Signup error:", error.message);
       set({ user: null });
-      return { message: "unsuccess", isSuccess: false };
+      return {
+        message: "An error occurred while creating user",
+        isSuccess: false,
+      };
     } finally {
       set({ authLoading: false });
     }
@@ -155,7 +165,7 @@ export const useAuthStore = create<AuthState>((set) => ({
   updateUser: async (data) => {
     try {
       await updateProfile(auth.currentUser!, {
-        displayName: data.fullName,
+        displayName: `${data.firstName} ${data.lastName}`,
         photoURL: data.image,
       });
       return { message: "success", isSuccess: true };
