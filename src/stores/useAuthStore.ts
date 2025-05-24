@@ -89,8 +89,7 @@ export const useAuthStore = create<AuthState>((set) => ({
     }
   },
 
-    
-login: async (data) => {
+  login: async (data) => {
     try {
       const credential = await signInWithEmailAndPassword(
         auth,
@@ -108,4 +107,28 @@ login: async (data) => {
     }
   },
 
+  googleSignin: async () => {
+    try {
+      const credential = await signInWithPopup(auth, googleProvider);
+      const firebaseUser = credential.user;
+      set({ user: firebaseUser });
+
+      await publicAxios.post("auth/users", {
+        name: firebaseUser?.displayName,
+        email: firebaseUser.email,
+        image: firebaseUser?.photoURL,
+        isRobot: false,
+        isBlock: false,
+      });
+
+      // TODO: 👇 make the return conditional
+      return { message: "success", isSuccess: true };
+    } catch (error: any) {
+      console.error("Google Signin error:", error.message);
+      set({ user: null });
+      return { message: "unsuccess", isSuccess: false };
+    } finally {
+      set({ authLoading: false });
+    }
+  },
 }));
