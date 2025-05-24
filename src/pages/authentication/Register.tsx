@@ -188,7 +188,7 @@ const Register: FC = () => {
           </form>
         </div>
 
-        <div className="flex-1 p-10 border-[2px] rounded-2xl">
+        <div className="flex-1 rounded-2xl">
           <img src={bannerImage} alt="Banner Image"  className="rounded-xl"/>
         </div>
       </SectionContainer>
