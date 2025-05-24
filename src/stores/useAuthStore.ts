@@ -51,3 +51,41 @@ interface AuthState {
   checkAuth: () => () => void;
 }
 
+export const useAuthStore = create<AuthState>((set) => ({
+  user: null,
+  authLoading: true,
+
+  signup: async (data) => {
+    try {
+      const credential = await createUserWithEmailAndPassword(
+        auth,
+        data.email,
+        data.password
+      );
+
+      const firebaseUser = credential.user;
+      set({ user: firebaseUser });
+
+      await updateProfile(auth.currentUser!, {
+        displayName: data.fullName,
+        photoURL: data.image,
+      });
+
+      const { data: userData } = await publicAxios.post("auth/users", {
+        name: data.name,
+        email: data.email,
+        image: data.image,
+        isRobot: !data.robot,
+        isBlock: false,
+      });
+
+      if (userData?.insertedId) return { message: "success", isSuccess: true };
+    } catch (error: any) {
+      console.error("Signup error:", error.message);
+      set({ user: null });
+      return { message: "unsuccess", isSuccess: false };
+    } finally {
+      set({ authLoading: false });
+    }
+  },
+}));
