@@ -88,4 +88,24 @@ export const useAuthStore = create<AuthState>((set) => ({
       set({ authLoading: false });
     }
   },
+
+    
+login: async (data) => {
+    try {
+      const credential = await signInWithEmailAndPassword(
+        auth,
+        data.email,
+        data.password
+      );
+      set({ user: credential.user });
+      return { message: "success", isSuccess: true };
+    } catch (error: any) {
+      console.error("Login error:", error.message);
+      set({ user: null });
+      return { message: "unsuccess", isSuccess: false };
+    } finally {
+      set({ authLoading: false });
+    }
+  },
+
 }));
