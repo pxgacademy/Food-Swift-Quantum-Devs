@@ -35,13 +35,11 @@ type RegisterFormData = z.infer<typeof schema>;
 interface SignupResponse {
   isSuccess: boolean;
   message: string;
-};
-
-
+}
 
 const Register: FC = () => {
-  const {signup} = useAuthStore()
-  
+  const { signup } = useAuthStore();
+
   const [isEye, setIsEye] = useState({
     pass: false,
     confirmPass: false,
@@ -64,13 +62,10 @@ const Register: FC = () => {
   return (
     <PageContainer>
       <SectionContainer margin="" className="flex gap-14">
-        <div className="lg:flex-1 w-full max-w-xl  flex items-center justify-center">
-          <div className="w-full max-w-lg mx-auto lg:mx-0 p-10 sm:p-20 border-[2px] rounded-4xl sm:rounded-full">
+        <div className="lg:flex-1 w-full flex items-center justify-center">
+          <div className="relative w-full max-w-lg mx-auto lg:mx-0 p-10 sm:p-20 my-16 border-[2px] rounded-4xl">
             <h2 className="text-xl text-center mb-3">Registration Form</h2>
-            <form
-              onSubmit={handleSubmit(onSubmit)}
-              className="relative space-y-3"
-            >
+            <form onSubmit={handleSubmit(onSubmit)} className="space-y-3">
               <div>
                 <label>First Name</label>
                 <input
@@ -144,7 +139,7 @@ const Register: FC = () => {
 
               <div>
                 <label>Confirm Password</label>
-                <div className="flex items-center right-2">
+                <div className="relative flex items-center">
                   <input
                     type={isEye.confirmPass ? "text" : "password"}
                     placeholder="********"
@@ -194,10 +189,10 @@ const Register: FC = () => {
                 )}
               </div>
 
-              <div className="absolute right-0 bg-base-100 border-[2px] p-2 rounded-full">
+              <div className="absolute right-16 bottom-0 translate-y-[50%] bg-base-100 border-[2px] p-2 rounded-full">
                 <button
                   type="submit"
-                  className="bg-primary hover:bg-primary/90 text-base-300 rounded-full p-2 cursor-pointer transition-all duration-150"
+                  className="bg-primary hover:bg-primary/90 text-base-300 rounded-full py-4 px-8 cursor-pointer transition-all duration-150"
                 >
                   Register
                 </button>
@@ -206,7 +201,7 @@ const Register: FC = () => {
           </div>
         </div>
 
-        <div className="hidden lg:block lg:flex-1 py-16 px-10 bg-primary/5">
+        <div className="hidden lg:flex items-center lg:flex-1 py-16 px-10 bg-primary/5">
           <img src={bannerImage} alt="Banner Image" className="rounded-xl" />
         </div>
       </SectionContainer>
