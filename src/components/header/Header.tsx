@@ -1,82 +1,117 @@
+import React from "react";
 import { Link } from "react-router-dom";
-import { User } from "lucide-react";
+import { User as UserIcon } from "lucide-react";
 import deliveryIcon from "/food-delivery.png";
 import DefineTheme from "../define-theme/DefineTheme";
+import { useAuthStore } from "../../stores/useAuthStore";
+import Logout from "../logout/Logout";
 
-const Header = () => {
-  // TODO:
-  const user: { email: string; photoURL?: string } = { email: "" };
+interface IUser {
+  photoURL?: string | null;
+  // Add other user properties here as needed
+}
 
-  const location_button = (
-    <button className="flex btn">
+const Header: React.FC = () => {
+  const { user } = useAuthStore() as { user: IUser | null };
+
+  const locationButton = (
+    <button className="flex btn" aria-label="Select your location">
       <span className="hidden md:inline">Select</span> Your Location
     </button>
   );
 
   return (
-    <nav className="border-b border-primary/30 py-3">
-      <div className="container mx-auto px-3 sm:px-5 flex justify-between">
-        {/* left side nav */}
-        <Link to="/">
-          <div className="flex items-center">
-            <img src={deliveryIcon} alt="logo" className="size-8 sm:size-10" />
-            <h2 className="text-lg sm:text-2xl md:text-2xl bg-base-100 px-5 py-1 rounded font-Lobster text-primary">
+    <nav
+      className="border-b border-primary/30 py-3"
+      role="navigation"
+      aria-label="Main navigation"
+    >
+      <div className="container mx-auto px-3 sm:px-5 flex justify-between items-center">
+        {/* Left side: Logo and brand */}
+        <Link to="/" aria-label="Homepage">
+          <div className="flex items-center gap-3">
+            <img src={deliveryIcon} alt="Loizar logo" className="w-8 sm:w-10" />
+            <h1 className="text-lg sm:text-2xl md:text-2xl bg-base-100 px-5 py-1 rounded font-Lobster text-primary">
               Loizar
-            </h2>
+            </h1>
           </div>
         </Link>
 
-        <div className="flex items-center gap-2">
-          <div className={`${!user && "hidden"} sm:block`}>
-            {location_button}
-          </div>
+        {/* Right side: Navigation buttons and user menu */}
+        <div className="flex items-center gap-4">
+          {/* Location button visible only if user logged in */}
+          <div className="hidden sm:block">{locationButton}</div>
 
+          {/* Authentication buttons (Login/Register) if no user */}
           {!user && (
             <>
               <Link to="/login">
-                <button className="btn btn-neutral">Login</button>
+                <button type="button" className="btn btn-neutral">
+                  Login
+                </button>
               </Link>
               <Link to="/register">
-                <button className="btn btn-outline">Register</button>
+                <button type="button" className="btn btn-outline">
+                  Register
+                </button>
               </Link>
             </>
           )}
 
+          {/* User avatar dropdown */}
           <div className="dropdown dropdown-end">
             <div
               tabIndex={0}
               role="button"
+              aria-haspopup="true"
+              aria-expanded="false"
               className="btn btn-ghost btn-circle avatar text-center"
             >
-              <div className="size-7 sm:size-10 rounded-full">
+              <div className="w-7 sm:w-10 rounded-full overflow-hidden">
                 {user?.photoURL ? (
-                  <img alt="" src={user?.photoURL} className="rounded-full" />
+                  <img
+                    src={user.photoURL}
+                    alt="User avatar"
+                    className="rounded-full object-cover w-full h-full"
+                  />
                 ) : (
-                  <span className="w-full h-full flex items-center justify-center border border-primary/40 rounded-full">
-                    <User size={32} />
+                  <span className="flex items-center justify-center w-full h-full border border-primary/40 rounded-full">
+                    <UserIcon size={24} aria-hidden="true" />
                   </span>
                 )}
               </div>
             </div>
+
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content bg-base-200 rounded-box z-1 mt-3 w-52 p-2 shadow"
+              className="menu menu-sm dropdown-content bg-base-200 rounded-box z-10 mt-3 w-52 p-2 shadow"
+              role="menu"
+              aria-label="User menu"
             >
               {user && (
-                <li>
-                  <a className="justify-between">
-                    Profile
-                    <span className="badge">New</span>
-                  </a>
-                </li>
+                <>
+                  <li role="menuitem">
+                    <a href="#" className="justify-between">
+                      Profile
+                      <span className="badge">New</span>
+                    </a>
+                  </li>
+                  <li role="menuitem">
+                    <Link to="/dashboard">Dashboard</Link>
+                  </li>
+                </>
               )}
-              <li>
+              <li role="menuitem">
                 <DefineTheme />
               </li>
-              <li>
-                <a>Settings</a>
+              <li role="menuitem">
+                <Link to="/settings">Settings</Link>
               </li>
-              {user && <li>{/* <Logout /> */}</li>}
+              {user && (
+                <li role="menuitem">
+                  <Logout />
+                </li>
+              )}
             </ul>
           </div>
         </div>

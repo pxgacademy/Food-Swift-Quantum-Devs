@@ -19,7 +19,7 @@ const DefineTheme: React.FC = () => {
       </div>
       <ul
         tabIndex={0}
-        className="max-h-96 overflow-y-auto flex-nowrap dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm"
+        className="max-h-96 overflow-y-auto flex-nowrap dropdown-content menu bg-base-200 rounded-box z-1 w-52 p-2 shadow-sm"
       >
         {THEMES?.map((t: string) => (
           <li key={t} role="button" onClick={() => setTheme(t)}>

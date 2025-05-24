@@ -139,11 +139,14 @@ export const useAuthStore = create<AuthState>((set) => ({
     try {
       await signOut(auth);
       set({ user: null });
-      return { message: "success", isSuccess: true };
+      return { message: "Logged out successfully", isSuccess: true };
       // eslint-disable-next-line
     } catch (error: any) {
       console.error("Logout error:", error.message);
-      return { message: "unsuccess", isSuccess: false };
+      return {
+        message: "An error occurred while logging out.",
+        isSuccess: false,
+      };
     } finally {
       set({ authLoading: false });
     }
@@ -169,7 +172,6 @@ export const useAuthStore = create<AuthState>((set) => ({
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       set({ user: currentUser });
 
-      /*
       const sendToken = async () => {
         try {
           await axios.post(
@@ -201,7 +203,6 @@ export const useAuthStore = create<AuthState>((set) => ({
       // TODO: 👇 Uncomment the lines below for real JWT handling
       // if (currentUser?.email) sendToken();
       // else deleteToken();
-      */
 
       set({ authLoading: false }); // TEMP
     });
