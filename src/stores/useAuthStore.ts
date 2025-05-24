@@ -131,4 +131,17 @@ export const useAuthStore = create<AuthState>((set) => ({
       set({ authLoading: false });
     }
   },
+
+  logout: async () => {
+    try {
+      await signOut(auth);
+      set({ user: null });
+      return { message: "success", isSuccess: true };
+    } catch (error: any) {
+      console.error("Logout error:", error.message);
+      return { message: "unsuccess", isSuccess: false };
+    } finally {
+      set({ authLoading: false });
+    }
+  },
 }));
