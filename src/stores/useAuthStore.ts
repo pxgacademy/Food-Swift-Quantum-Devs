@@ -144,4 +144,64 @@ export const useAuthStore = create<AuthState>((set) => ({
       set({ authLoading: false });
     }
   },
+
+
+  
+
+
+
+ 
+
+
+  updateUser: async (data) => {
+    try {
+      await updateProfile(auth.currentUser!, {
+        displayName: data.fullName,
+        photoURL: data.image,
+      });
+      return { message: "success", isSuccess: true };
+    } catch (error: any) {
+      console.error("Update user error:", error.message);
+      return { message: "unsuccess", isSuccess: false };
+    } finally {
+      set({ authLoading: false });
+    }
+  },
+
+  checkAuth: () => {
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      set({ user: currentUser });
+
+      const sendToken = async () => {
+        try {
+          await axios.post(`${API_LINK}/jwt`, { email: currentUser?.email }, {
+            withCredentials: true,
+          });
+        } catch (err: any) {
+          Swal.fire({ title: err.message, icon: "error" });
+        } finally {
+          set({ authLoading: false });
+        }
+      };
+
+      const deleteToken = async () => {
+        try {
+          await axios.delete(`${API_LINK}/logout`, { withCredentials: true });
+        } catch (err: any) {
+          Swal.fire({ title: err.message, icon: "error" });
+        } finally {
+          set({ authLoading: false });
+        }
+      };
+
+      // Uncomment the lines below for real JWT handling
+      // if (currentUser?.email) sendToken();
+      // else deleteToken();
+
+      set({ authLoading: false }); // TEMP
+    });
+
+    return unsubscribe;
+  },
+
 }));
