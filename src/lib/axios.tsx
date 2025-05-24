@@ -1,6 +1,7 @@
 import axios from "axios";
 import type { AxiosInstance, AxiosResponse, AxiosError } from "axios";
 import { useEffect } from "react";
+import { useAuthStore } from "../stores/useAuthStore";
 // import { signOutUser } from "../utils/auth-utils";
 
 const BASE_URL = import.meta.env.VITE_API_LINK;
@@ -19,12 +20,14 @@ const privateAxiosInstance: AxiosInstance = axios.create({
 
 // Custom hook to get authenticated Axios instance with 401/403 interceptor.
 export const usePrivateAxios = (): AxiosInstance => {
+  const { logout } = useAuthStore();
+
   useEffect(() => {
     const responseInterceptor = privateAxiosInstance.interceptors.response.use(
       (response: AxiosResponse) => response,
       (error: AxiosError) => {
         const status = error?.status;
-        if (status === 401 || status === 403) signOutUser();
+        if (status === 401 || status === 403) logout();
         return Promise.reject(error);
       }
     );
