@@ -47,6 +47,9 @@ const Register: FC = () => {
 
   const onSubmit = (data: RegisterFormData) => {
     console.log("Form Submitted: ", data);
+    console.log("Form Submitted: ", data);
+    console.log("Form Submitted: ", data);
+    console.log("Form Submitted: ", data);
   };
 
   return (
