@@ -1,6 +1,6 @@
 import { useState, type FC } from "react";
 import { useForm } from "react-hook-form";
-import { boolean, z } from "zod";
+import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import PageContainer from "../../components/containers/PageContainer";
 import SectionContainer from "../../components/containers/SectionContainer";
