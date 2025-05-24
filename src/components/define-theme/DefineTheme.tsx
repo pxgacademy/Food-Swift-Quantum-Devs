@@ -1,6 +1,6 @@
 import React from "react";
 import { THEMES } from "../../constants/theme-collection";
-import { useThemeStore } from "../../hooks/useThemeStore";
+import { useThemeStore } from "../../stores/useThemeStore";
 
 const DefineTheme: React.FC = () => {
   const { setTheme, theme } = useThemeStore();

@@ -36,6 +36,8 @@ export const usePrivateAxios = (): AxiosInstance => {
     return () => {
       privateAxiosInstance.interceptors.response.eject(responseInterceptor);
     };
+
+    // eslint-disable-next-line
   }, []);
 
   return privateAxiosInstance;

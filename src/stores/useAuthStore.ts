@@ -80,6 +80,7 @@ export const useAuthStore = create<AuthState>((set) => ({
       });
 
       if (userData?.insertedId) return { message: "success", isSuccess: true };
+      // eslint-disable-next-line
     } catch (error: any) {
       console.error("Signup error:", error.message);
       set({ user: null });
@@ -98,6 +99,7 @@ export const useAuthStore = create<AuthState>((set) => ({
       );
       set({ user: credential.user });
       return { message: "success", isSuccess: true };
+      // eslint-disable-next-line
     } catch (error: any) {
       console.error("Login error:", error.message);
       set({ user: null });
@@ -123,6 +125,7 @@ export const useAuthStore = create<AuthState>((set) => ({
 
       // TODO: 👇 make the return conditional
       return { message: "success", isSuccess: true };
+      // eslint-disable-next-line
     } catch (error: any) {
       console.error("Google Signin error:", error.message);
       set({ user: null });
@@ -137,6 +140,7 @@ export const useAuthStore = create<AuthState>((set) => ({
       await signOut(auth);
       set({ user: null });
       return { message: "success", isSuccess: true };
+      // eslint-disable-next-line
     } catch (error: any) {
       console.error("Logout error:", error.message);
       return { message: "unsuccess", isSuccess: false };
@@ -145,14 +149,6 @@ export const useAuthStore = create<AuthState>((set) => ({
     }
   },
 
-
-  
-
-
-
- 
-
-
   updateUser: async (data) => {
     try {
       await updateProfile(auth.currentUser!, {
@@ -160,6 +156,7 @@ export const useAuthStore = create<AuthState>((set) => ({
         photoURL: data.image,
       });
       return { message: "success", isSuccess: true };
+      // eslint-disable-next-line
     } catch (error: any) {
       console.error("Update user error:", error.message);
       return { message: "unsuccess", isSuccess: false };
@@ -172,11 +169,17 @@ export const useAuthStore = create<AuthState>((set) => ({
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       set({ user: currentUser });
 
+      /*
       const sendToken = async () => {
         try {
-          await axios.post(`${API_LINK}/jwt`, { email: currentUser?.email }, {
-            withCredentials: true,
-          });
+          await axios.post(
+            `${API_LINK}/jwt`,
+            { email: currentUser?.email },
+            {
+              withCredentials: true,
+            }
+          );
+          // eslint-disable-next-line
         } catch (err: any) {
           Swal.fire({ title: err.message, icon: "error" });
         } finally {
@@ -187,6 +190,7 @@ export const useAuthStore = create<AuthState>((set) => ({
       const deleteToken = async () => {
         try {
           await axios.delete(`${API_LINK}/logout`, { withCredentials: true });
+          // eslint-disable-next-line
         } catch (err: any) {
           Swal.fire({ title: err.message, icon: "error" });
         } finally {
@@ -194,14 +198,14 @@ export const useAuthStore = create<AuthState>((set) => ({
         }
       };
 
-      // Uncomment the lines below for real JWT handling
+      // TODO: 👇 Uncomment the lines below for real JWT handling
       // if (currentUser?.email) sendToken();
       // else deleteToken();
+      */
 
       set({ authLoading: false }); // TEMP
     });
 
     return unsubscribe;
   },
-
 }));

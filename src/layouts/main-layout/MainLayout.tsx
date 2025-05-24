@@ -1,7 +1,7 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
 import Header from "../../components/header/Header";
-import { useThemeStore } from "../../hooks/useThemeStore";
+import { useThemeStore } from "../../stores/useThemeStore";
 
 const MainLayout: React.FC = () => {
   const { theme } = useThemeStore();
