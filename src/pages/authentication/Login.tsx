@@ -8,6 +8,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import bannerImage from "../../assets/images/3896377.jpg";
 import { Eye, EyeOff, Mail } from "lucide-react";
 import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const passwordRegex =
   /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?#&])[A-Za-z\d@$!%*?#&]{8,}$/;
@@ -43,9 +44,23 @@ const Login: FC = () => {
   });
 
   const onSubmit = async (data: LoginFormData) => {
-    // const {isSuccess, message}: SignupResponse = await signup(data)
-    // console.log(isSuccess, message);
-    console.log(data);
+    const { isSuccess, message }: LoginResponse = await login(data);
+    console.log(isSuccess, message);
+
+    if (isSuccess) {
+      Swal.fire({
+        title: "Success",
+        text: message,
+        position: "center",
+        timer: 2000,
+        showConfirmButton: false,
+      });
+    } else
+      Swal.fire({
+        title: "Error",
+        text: message,
+        showConfirmButton: true,
+      });
   };
 
   return (

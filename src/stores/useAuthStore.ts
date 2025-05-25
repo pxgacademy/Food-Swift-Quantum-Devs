@@ -109,12 +109,15 @@ export const useAuthStore = create<AuthState>((set) => ({
         data.password
       );
       set({ user: credential.user });
-      return { message: "success", isSuccess: true };
+      return { message: "User successfully logged in", isSuccess: true };
       // eslint-disable-next-line
     } catch (error: any) {
       console.error("Login error:", error.message);
       set({ user: null });
-      return { message: "unsuccess", isSuccess: false };
+      return {
+        message: error.message,
+        isSuccess: false,
+      };
     } finally {
       set({ authLoading: false });
     }
