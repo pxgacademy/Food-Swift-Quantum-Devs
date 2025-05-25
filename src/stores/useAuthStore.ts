@@ -76,6 +76,7 @@ export const useAuthStore = create<AuthState>((set) => ({
         firstName: data.firstName,
         lastName: data.lastName,
         email: data.email,
+        password: data.password,
         isHuman: !data.isHuman,
         isBlock: false,
       });
