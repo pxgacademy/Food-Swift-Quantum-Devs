@@ -7,6 +7,7 @@ import SectionContainer from "../../components/containers/SectionContainer";
 import { Eye, EyeOff } from "lucide-react";
 import bannerImage from "../../assets/images/3896377.jpg";
 import { useAuthStore } from "../../stores/useAuthStore";
+import { Link } from "react-router-dom";
 
 const passwordRegex =
   /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?#&])[A-Za-z\d@$!%*?#&]{8,}$/;
@@ -198,6 +199,13 @@ const Register: FC = () => {
                 </button>
               </div>
             </form>
+
+            <p>
+              Already have an account? Please{" "}
+              <Link to="/login" className="btn btn-link px-0">
+                Login
+              </Link>
+            </p>
           </div>
         </div>
 
