@@ -7,7 +7,7 @@ import SectionContainer from "../../components/containers/SectionContainer";
 import { Eye, EyeOff } from "lucide-react";
 import bannerImage from "../../assets/images/3896377.jpg";
 import { useAuthStore } from "../../stores/useAuthStore";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 
 const passwordRegex =
@@ -40,10 +40,11 @@ interface SignupResponse {
 }
 
 const Register: FC = () => {
+  const {state} = useLocation()
   const { signup, user } = useAuthStore();
   const navigate = useNavigate()
 
-  if(user) navigate('/')
+    if (user) navigate(state?.reach || "/");
 
   const [isEye, setIsEye] = useState({
     pass: false,
@@ -70,7 +71,7 @@ const Register: FC = () => {
             timer: 2000,
             showConfirmButton: false,
           });
-          navigate('/')
+          navigate(state?.reach || "/");
         } else
           Swal.fire({
             title: "Error",

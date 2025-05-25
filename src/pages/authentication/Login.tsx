@@ -7,7 +7,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import bannerImage from "../../assets/images/3896377.jpg";
 import { Eye, EyeOff, Mail } from "lucide-react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 
 const passwordRegex =
@@ -31,11 +31,12 @@ interface LoginResponse {
 }
 
 const Login: FC = () => {
+  const { state } = useLocation();
+  const navigate = useNavigate();
   const { login, user } = useAuthStore();
   const [isEye, setIsEye] = useState(false);
-  const navigate = useNavigate();
 
-  if (user) navigate("/");
+  if (user) navigate(state?.reach || "/");
 
   const {
     register,
@@ -57,6 +58,7 @@ const Login: FC = () => {
         timer: 2000,
         showConfirmButton: false,
       });
+      navigate(state?.reach || "/");
     } else
       Swal.fire({
         title: "Error",
