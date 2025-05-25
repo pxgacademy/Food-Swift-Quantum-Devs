@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { User as UserIcon } from "lucide-react";
 import deliveryIcon from "/food-delivery.png";
@@ -13,6 +13,31 @@ interface IUser {
 
 const Header: React.FC = () => {
   const { user } = useAuthStore() as { user: IUser | null };
+  const [show, setShow] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
+
+  useEffect(() => {
+    const controlNavbar = () => {
+      if (typeof window === "undefined") return;
+
+      const currentScrollY = window.scrollY;
+
+      if (currentScrollY < 100) {
+        setShow(true);
+        setLastScrollY(currentScrollY);
+        return;
+      }
+
+      if (currentScrollY > lastScrollY) setShow(false);
+      else setShow(true);
+
+      setLastScrollY(currentScrollY);
+    };
+
+    window.addEventListener("scroll", controlNavbar);
+
+    return () => window.removeEventListener("scroll", controlNavbar);
+  }, [lastScrollY]);
 
   const locationButton = (
     <button className="cursor-pointer" aria-label="Select your location">
@@ -22,7 +47,10 @@ const Header: React.FC = () => {
 
   return (
     <nav
-      className="border-b border-primary/30 py-3"
+      className={`fixed top-0 left-0 w-full transition-transform duration-300 z-50
+        py-3 bg-base-300/80 backdrop-blur-md
+        ${show ? "translate-y-0" : "-translate-y-full"}
+        `}
       role="navigation"
       aria-label="Main navigation"
     >

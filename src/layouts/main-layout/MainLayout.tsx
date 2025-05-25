@@ -15,7 +15,7 @@ const MainLayout: React.FC = () => {
   }, [checkAuth]);
 
   return (
-    <section data-theme={theme} className="min-h-screen">
+    <section data-theme={theme}>
       <Header />
       <Outlet />
       <Footer />

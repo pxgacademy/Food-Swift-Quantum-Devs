@@ -82,7 +82,7 @@ const Register: FC = () => {
 
   return (
     <PageContainer>
-      <SectionContainer margin="" className="flex gap-14">
+      <SectionContainer margin="mt-10" className="flex gap-14">
         <div className="lg:flex-1 w-full flex items-center justify-center">
           <div className="relative w-full max-w-lg mx-auto lg:mx-0 p-10 sm:p-20 my-16 border-[2px] rounded-4xl">
             <h2 className="text-xl text-center mb-3">Registration Form</h2>
