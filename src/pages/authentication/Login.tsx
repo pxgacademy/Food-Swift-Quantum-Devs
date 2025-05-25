@@ -33,9 +33,9 @@ interface LoginResponse {
 const Login: FC = () => {
   const { login, user } = useAuthStore();
   const [isEye, setIsEye] = useState(false);
-  const navigate = useNavigate()
-  
-    if(user) navigate('/')
+  const navigate = useNavigate();
+
+  if (user) navigate("/");
 
   const {
     register,
