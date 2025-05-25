@@ -93,7 +93,7 @@ export const useAuthStore = create<AuthState>((set) => ({
       console.error("Signup error:", error.message);
       set({ user: null });
       return {
-        message: "An error occurred while creating user",
+        message: error.message,
         isSuccess: false,
       };
     } finally {

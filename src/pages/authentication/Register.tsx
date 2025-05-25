@@ -7,7 +7,8 @@ import SectionContainer from "../../components/containers/SectionContainer";
 import { Eye, EyeOff } from "lucide-react";
 import bannerImage from "../../assets/images/3896377.jpg";
 import { useAuthStore } from "../../stores/useAuthStore";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const passwordRegex =
   /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?#&])[A-Za-z\d@$!%*?#&]{8,}$/;
@@ -39,7 +40,10 @@ interface SignupResponse {
 }
 
 const Register: FC = () => {
-  const { signup } = useAuthStore();
+  const { signup, user } = useAuthStore();
+  const navigate = useNavigate()
+
+  if(user) navigate('/')
 
   const [isEye, setIsEye] = useState({
     pass: false,
@@ -55,9 +59,24 @@ const Register: FC = () => {
   });
 
   const onSubmit = async (data: RegisterFormData) => {
-    // const {isSuccess, message}: SignupResponse = await signup(data)
-    // console.log(isSuccess, message);
-    console.log(data);
+    const {isSuccess, message}: SignupResponse = await signup(data)
+    console.log(isSuccess, message);
+
+    if (isSuccess) {
+          Swal.fire({
+            title: "Success",
+            text: message,
+            position: "center",
+            timer: 2000,
+            showConfirmButton: false,
+          });
+          navigate('/')
+        } else
+          Swal.fire({
+            title: "Error",
+            text: message,
+            showConfirmButton: true,
+          });
   };
 
   return (
